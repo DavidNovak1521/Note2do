@@ -15,6 +15,7 @@ export 'app_routes.gr.dart';
     AutoRoute(
       page: NavigationPage,
       path: '/navigation',
+      initial: true,
       children: [
         AutoRoute(
           path: 'home',
