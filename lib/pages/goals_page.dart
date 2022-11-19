@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../style/my_colors.dart';
 import '../widgets/basic_page_container.dart';
+import '../widgets/my_title_text.dart';
 
 class GoalsPage extends StatelessWidget {
   const GoalsPage({super.key});
@@ -10,13 +9,12 @@ class GoalsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasicPageContainer(
-      child: Text(
-        'GoalsPage',
-        style: GoogleFonts.montserrat(
-          color: MyColors.dark,
-          fontSize: 30,
-          fontWeight: FontWeight.w600,
-        ),
+      child: CustomScrollView(
+        slivers: [
+          const SliverToBoxAdapter(
+            child: MyTitleText(text: 'Goals'),
+          ),
+        ],
       ),
     );
   }
