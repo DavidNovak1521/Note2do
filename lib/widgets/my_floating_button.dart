@@ -14,6 +14,7 @@ class MyFloatingButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () => tabsRouter.setActiveIndex(2),
       backgroundColor: MyColors.tertiaryBlue,
+      elevation: 0,
       child: Icon(
         Icons.add_rounded,
         color: MyColors.dark,

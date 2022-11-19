@@ -53,37 +53,44 @@ class _NavigationPageState extends State<NavigationPage> {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
       ),
-      child: BottomAppBar(
-        color: MyColors.dark,
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
-        elevation: 0,
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent,
+      child: ColoredBox(
+        color: MyColors.white,
+        child: BottomAppBar(
+          color: MyColors.dark,
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 10,
           elevation: 0,
-          onTap: (index) async {
-            if (index != 2) {
-              if (AutoRouter.of(context).canPop() &&
-                  index == myTabsRouter.activeIndex &&
-                  AutoRouter.of(context).currentPath.split('/').last !=
-                      'default') {
-                AutoRouter.of(context).popTop();
+          child: BottomNavigationBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            onTap: (index) async {
+              if (index != 2) {
+                if (AutoRouter.of(context).canPop() &&
+                    index == myTabsRouter.activeIndex &&
+                    AutoRouter.of(context).currentPath.split('/').last !=
+                        'default') {
+                  AutoRouter.of(context).popTop();
+                }
+                myTabsRouter.setActiveIndex(index);
               }
-              myTabsRouter.setActiveIndex(index);
-            }
-          },
-          currentIndex: myTabsRouter.activeIndex,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: MyColors.white,
-          unselectedItemColor: MyColors.white.withOpacity(0.5),
-          items: pages
-              .map(
-                (page) => BottomNavigationBarItem(
-                  icon: page['icon'],
-                  label: page['label'],
-                ),
-              )
-              .toList(),
+            },
+            currentIndex: myTabsRouter.activeIndex,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: MyColors.white,
+            unselectedItemColor: MyColors.white.withOpacity(0.5),
+            selectedIconTheme: IconThemeData(
+              size: 30,
+              color: MyColors.white,
+            ),
+            items: pages
+                .map(
+                  (page) => BottomNavigationBarItem(
+                    icon: page['icon'],
+                    label: page['label'],
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ),
     );
@@ -97,6 +104,7 @@ class _NavigationPageState extends State<NavigationPage> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: AutoTabsScaffold(
+        backgroundColor: MyColors.dark,
         animationDuration: const Duration(milliseconds: 0),
         appBarBuilder: (context, tabsRouter) => const MyAppBar(),
         routes: pages
