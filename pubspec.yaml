@@ -17,6 +17,7 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.6
   intl: ^0.17.0
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +32,10 @@ flutter:
 
   assets:
     - assets/fonts/
+    - assets/images/note2do_logo_white.svg
+    - assets/images/note2do_app_icon.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/note2do_app_icon.png"
