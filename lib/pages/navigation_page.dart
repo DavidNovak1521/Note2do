@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../routes/app_routes.dart';
 import '../style/my_colors.dart';
+import '../widgets/my_floating_button.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -109,14 +110,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 builder: (context, TabsRouter? data, _) {
                   return data == null
                       ? Container()
-                      : FloatingActionButton(
-                          onPressed: () => print('Clicked'),
-                          backgroundColor: MyColors.tertiaryBlue,
-                          child: Icon(
-                            Icons.add,
-                            color: MyColors.dark,
-                          ),
-                        );
+                      : MyFloatingButton(tabsRouter: data);
                 },
               )
             : null,
