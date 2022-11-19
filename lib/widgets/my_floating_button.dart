@@ -15,7 +15,7 @@ class MyFloatingButton extends StatelessWidget {
       onPressed: () => tabsRouter.setActiveIndex(2),
       backgroundColor: MyColors.tertiaryBlue,
       child: Icon(
-        Icons.add,
+        Icons.add_rounded,
         color: MyColors.dark,
       ),
     );

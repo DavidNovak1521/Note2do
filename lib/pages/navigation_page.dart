@@ -18,12 +18,12 @@ class _NavigationPageState extends State<NavigationPage> {
     {
       'label': 'Home',
       'page': const HomeTab(),
-      'icon': const Icon(Icons.home_outlined),
+      'icon': const Icon(Icons.home_rounded),
     },
     {
       'label': 'Notes',
       'page': const NotesTab(),
-      'icon': const Icon(Icons.note_outlined),
+      'icon': const Icon(Icons.note_rounded),
     },
     {
       // not clickable
@@ -34,12 +34,12 @@ class _NavigationPageState extends State<NavigationPage> {
     {
       'label': 'To Do',
       'page': const ToDosTab(),
-      'icon': const Icon(Icons.work_outline),
+      'icon': const Icon(Icons.work_rounded),
     },
     {
       'label': 'Goals',
       'page': const GoalsTab(),
-      'icon': const Icon(Icons.push_pin_outlined),
+      'icon': const Icon(Icons.push_pin_rounded),
     },
   ];
   final myTabsRouterNotifier = ValueNotifier<TabsRouter?>(null);
@@ -53,31 +53,38 @@ class _NavigationPageState extends State<NavigationPage> {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
       ),
-      child: BottomNavigationBar(
-        backgroundColor: MyColors.dark,
-        onTap: (index) async {
-          if (index != 2) {
-            if (AutoRouter.of(context).canPop() &&
-                index == myTabsRouter.activeIndex &&
-                AutoRouter.of(context).currentPath.split('/').last !=
-                    'default') {
-              AutoRouter.of(context).popTop();
+      child: BottomAppBar(
+        color: MyColors.dark,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 10,
+        elevation: 0,
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          onTap: (index) async {
+            if (index != 2) {
+              if (AutoRouter.of(context).canPop() &&
+                  index == myTabsRouter.activeIndex &&
+                  AutoRouter.of(context).currentPath.split('/').last !=
+                      'default') {
+                AutoRouter.of(context).popTop();
+              }
+              myTabsRouter.setActiveIndex(index);
             }
-            myTabsRouter.setActiveIndex(index);
-          }
-        },
-        currentIndex: myTabsRouter.activeIndex,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: MyColors.white,
-        unselectedItemColor: MyColors.white.withOpacity(0.5),
-        items: pages
-            .map(
-              (page) => BottomNavigationBarItem(
-                icon: page['icon'],
-                label: page['label'],
-              ),
-            )
-            .toList(),
+          },
+          currentIndex: myTabsRouter.activeIndex,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: MyColors.white,
+          unselectedItemColor: MyColors.white.withOpacity(0.5),
+          items: pages
+              .map(
+                (page) => BottomNavigationBarItem(
+                  icon: page['icon'],
+                  label: page['label'],
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }
