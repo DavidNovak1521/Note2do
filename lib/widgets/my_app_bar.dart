@@ -14,7 +14,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       backgroundColor: MyColors.dark,
       title: SvgPicture.asset(
-        'assets/images/note2do_logo_white.svg',
+        'assets/images/note2do_appbar_image.svg',
         color: MyColors.white,
         width: MediaQuery.of(context).size.width * 0.35,
       ),
