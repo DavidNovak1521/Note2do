@@ -43,5 +43,5 @@ flutter_icons:
   image_path: "assets/images/note2do_app_icon.png"
 
 flutter_native_splash:
-  color: "#013475"
+  color: "#151B2B"
   image: assets/images/note2do_splash_image.png
