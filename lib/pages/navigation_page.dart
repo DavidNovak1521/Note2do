@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 
 import '../routes/app_routes.dart';
 import '../style/my_colors.dart';
+import '../widgets/my_app_bar.dart';
 import '../widgets/my_floating_button.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -90,10 +91,7 @@ class _NavigationPageState extends State<NavigationPage> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: AutoTabsScaffold(
         animationDuration: const Duration(milliseconds: 0),
-        appBarBuilder: (context, tabsRouter) => AppBar(
-          title: const Text('Note2do'),
-          backgroundColor: MyColors.dark,
-        ),
+        appBarBuilder: (context, tabsRouter) => const MyAppBar(),
         routes: pages
             .map((page) => page['page'] as PageRouteInfo<dynamic>)
             .toList(),
