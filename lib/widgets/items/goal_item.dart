@@ -3,26 +3,26 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../style/my_colors.dart';
 
-class ToDoItem extends StatefulWidget {
+class GoalItem extends StatefulWidget {
   final String text;
   bool isDone;
 
-  ToDoItem({
+  GoalItem({
     super.key,
     required this.text,
     required this.isDone,
   });
 
   @override
-  State<ToDoItem> createState() => _ToDoItemState();
+  State<GoalItem> createState() => _GoalItemState();
 }
 
-class _ToDoItemState extends State<ToDoItem> {
+class _GoalItemState extends State<GoalItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: MyColors.secondaryBlue,
+        color: MyColors.tertiaryBlue,
         borderRadius: BorderRadius.circular(20),
       ),
       child: ListTile(
@@ -39,11 +39,8 @@ class _ToDoItemState extends State<ToDoItem> {
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.montserrat(
             fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: widget.isDone
-                ? MyColors.white.withOpacity(0.5)
-                : MyColors.white,
-            decoration: widget.isDone ? TextDecoration.lineThrough : null,
+            fontWeight: widget.isDone ? FontWeight.w600 : FontWeight.w400,
+            color: MyColors.white,
           ),
         ),
         leading: Icon(
@@ -52,6 +49,7 @@ class _ToDoItemState extends State<ToDoItem> {
               : Icons.check_box_outline_blank_rounded,
           color: MyColors.white,
         ),
+        // trailing: ,
       ),
     );
   }
