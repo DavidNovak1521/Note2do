@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import './routes/app_routes.dart';
 import './providers/to_dos.dart';
+import './providers/goals.dart';
 
 void main() {
   GoogleFonts.config.allowRuntimeFetching = false;
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ToDos()),
+        ChangeNotifierProvider(create: (context) => Goals()),
       ],
       child: MaterialApp.router(
         title: 'Note2do',
