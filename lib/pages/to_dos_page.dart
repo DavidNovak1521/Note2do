@@ -1,65 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../style/my_colors.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
 import '../widgets/items/to_do_item.dart';
 import '../widgets/my_circular_slider.dart';
+import '../providers/to_dos.dart';
 
 // ignore: must_be_immutable
 class ToDosPage extends StatelessWidget {
-  final List<Map<String, dynamic>> tempToDos = [
-    {
-      'text': 'Első teendő',
-      'isDone': true,
-    },
-    {
-      'text': 'Második, de már hosszabb teendő',
-      'isDone': true,
-    },
-    {
-      'text': 'Harmadik, de még az előzőnél is hosszabb teendő tesztelni',
-      'isDone': false,
-    },
-    {
-      'text':
-          'Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. ',
-      'isDone': false,
-    },
-    {
-      'text': 'Valami szöveg 5',
-      'isDone': false,
-    },
-    {
-      'text': 'Valami szöveg 6',
-      'isDone': false,
-    },
-    {
-      'text': 'Valami szöveg 7',
-      'isDone': false,
-    },
-    {
-      'text': 'Valami szöveg 8',
-      'isDone': false,
-    },
-    {
-      'text': 'Valami szöveg 9',
-      'isDone': false,
-    },
-    {
-      'text': 'Valami szöveg 10',
-      'isDone': false,
-    },
-  ];
-  int numberOfDone = 0;
-
-  ToDosPage({super.key}) {
-    numberOfDone = tempToDos.where((todo) => todo['isDone']).length;
-  }
+  const ToDosPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final toDos = Provider.of<ToDos>(context).toDos;
+    final int numberOfDone = toDos.where((todo) => todo.isDone).length;
+
     return BasicPageContainer(
       child: CustomScrollView(
         slivers: [
@@ -76,7 +33,7 @@ class ToDosPage extends StatelessWidget {
                       alignment: Alignment.center,
                       child: MyCircularSlider(
                         initValue: numberOfDone.toDouble(),
-                        maxValue: tempToDos.length.toDouble(),
+                        maxValue: toDos.length.toDouble(),
                         color: MyColors.secondaryBlue,
                       ),
                     ),
@@ -91,8 +48,8 @@ class ToDosPage extends StatelessWidget {
               (context, index) => Container(
                 margin: const EdgeInsets.only(bottom: 15),
                 child: ToDoItem(
-                  text: tempToDos[index]['text'],
-                  isDone: tempToDos[index]['isDone'],
+                  text: toDos[index].text,
+                  isDone: toDos[index].isDone,
                 ),
               ),
             ),
