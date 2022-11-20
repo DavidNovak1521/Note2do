@@ -8,4 +8,5 @@ class MyColors {
   static Color get buttonBlue => const Color(0xFF1FF3FD); // #1FF3FD
   static Color get dark => const Color(0xFF151B2B); // #151B2B
   static Color get white => const Color(0xFFFFFFFF); // #FFFFFF
+  static Color get grey => const Color(0xFFCCCCCC); // #CCCCCC
 }
