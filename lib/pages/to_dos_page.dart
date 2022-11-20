@@ -19,7 +19,8 @@ class ToDosPage extends StatelessWidget {
       'isDone': false,
     },
     {
-      'text': 'Valami szöveg 4',
+      'text':
+          'Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. ',
       'isDone': false,
     },
     {

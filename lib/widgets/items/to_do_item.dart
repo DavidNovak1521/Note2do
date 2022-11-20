@@ -34,7 +34,7 @@ class _ToDoItemState extends State<ToDoItem> {
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         title: Text(
           widget.text,
-          maxLines: 1,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.montserrat(
             fontSize: 16,
