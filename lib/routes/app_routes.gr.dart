@@ -71,9 +71,11 @@ class AppRouter extends _i8.RootStackRouter {
       );
     },
     NotesRoute.name: (routeData) {
+      final args = routeData.argsAs<NotesRouteArgs>(
+          orElse: () => const NotesRouteArgs());
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.NotesPage(),
+        child: _i4.NotesPage(key: args.key),
       );
     },
     NewNoteRoute.name: (routeData) {
@@ -83,21 +85,31 @@ class AppRouter extends _i8.RootStackRouter {
       );
     },
     ToDosRoute.name: (routeData) {
+      final args = routeData.argsAs<ToDosRouteArgs>(
+          orElse: () => const ToDosRouteArgs());
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.ToDosPage(),
+        child: _i6.ToDosPage(key: args.key),
       );
     },
     GoalsRoute.name: (routeData) {
+      final args = routeData.argsAs<GoalsRouteArgs>(
+          orElse: () => const GoalsRouteArgs());
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.GoalsPage(),
+        child: _i7.GoalsPage(key: args.key),
       );
     },
   };
 
   @override
   List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(
+          '/#redirect',
+          path: '/',
+          redirectTo: '/navigation',
+          fullMatch: true,
+        ),
         _i8.RouteConfig(
           NavigationRoute.name,
           path: '/navigation',
@@ -198,7 +210,7 @@ class AppRouter extends _i8.RootStackRouter {
               ],
             ),
           ],
-        )
+        ),
       ];
 }
 
@@ -294,14 +306,26 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.NotesPage]
-class NotesRoute extends _i8.PageRouteInfo<void> {
-  const NotesRoute()
+class NotesRoute extends _i8.PageRouteInfo<NotesRouteArgs> {
+  NotesRoute({_i9.Key? key})
       : super(
           NotesRoute.name,
           path: 'default',
+          args: NotesRouteArgs(key: key),
         );
 
   static const String name = 'NotesRoute';
+}
+
+class NotesRouteArgs {
+  const NotesRouteArgs({this.key});
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'NotesRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -318,24 +342,48 @@ class NewNoteRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.ToDosPage]
-class ToDosRoute extends _i8.PageRouteInfo<void> {
-  const ToDosRoute()
+class ToDosRoute extends _i8.PageRouteInfo<ToDosRouteArgs> {
+  ToDosRoute({_i9.Key? key})
       : super(
           ToDosRoute.name,
           path: 'default',
+          args: ToDosRouteArgs(key: key),
         );
 
   static const String name = 'ToDosRoute';
 }
 
+class ToDosRouteArgs {
+  const ToDosRouteArgs({this.key});
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'ToDosRouteArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [_i7.GoalsPage]
-class GoalsRoute extends _i8.PageRouteInfo<void> {
-  const GoalsRoute()
+class GoalsRoute extends _i8.PageRouteInfo<GoalsRouteArgs> {
+  GoalsRoute({_i9.Key? key})
       : super(
           GoalsRoute.name,
           path: 'default',
+          args: GoalsRouteArgs(key: key),
         );
 
   static const String name = 'GoalsRoute';
+}
+
+class GoalsRouteArgs {
+  const GoalsRouteArgs({this.key});
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'GoalsRouteArgs{key: $key}';
+  }
 }
