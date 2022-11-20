@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import '../style/my_colors.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
 import '../widgets/items/to_do_item.dart';
+import '../widgets/my_circular_slider.dart';
 
 // ignore: must_be_immutable
 class ToDosPage extends StatelessWidget {
@@ -74,40 +74,10 @@ class ToDosPage extends StatelessWidget {
                   Expanded(
                     child: Align(
                       alignment: Alignment.center,
-                      child: SleekCircularSlider(
-                        min: 0,
-                        max: tempToDos.length.toDouble(),
-                        initialValue: numberOfDone.toDouble(),
-                        appearance: CircularSliderAppearance(
-                          size: MediaQuery.of(context).size.width * 0.20,
-                          angleRange: 360,
-                          startAngle: 270,
-                          animDurationMultiplier: 2,
-                          customWidths: CustomSliderWidths(
-                            progressBarWidth: 6,
-                            trackWidth: 6,
-                            handlerSize: 8,
-                          ),
-                          customColors: CustomSliderColors(
-                            hideShadow: true,
-                            trackColor: MyColors.grey,
-                            progressBarColor: MyColors.secondaryBlue,
-                            dotColor: MyColors.secondaryBlue,
-                          ),
-                        ),
-                        innerWidget: ((_) {
-                          return Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              '$numberOfDone / ${tempToDos.length}',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: MyColors.dark,
-                              ),
-                            ),
-                          );
-                        }),
+                      child: MyCircularSlider(
+                        initValue: numberOfDone.toDouble(),
+                        maxValue: tempToDos.length.toDouble(),
+                        color: MyColors.secondaryBlue,
                       ),
                     ),
                   ),
