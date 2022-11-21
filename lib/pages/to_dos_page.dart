@@ -48,8 +48,7 @@ class ToDosPage extends StatelessWidget {
               (context, index) => Container(
                 margin: const EdgeInsets.only(bottom: 15),
                 child: ToDoItem(
-                  text: toDos[index].text,
-                  isDone: toDos[index].isDone,
+                  toDo: toDos[index],
                 ),
               ),
             ),

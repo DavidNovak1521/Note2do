@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../style/my_colors.dart';
+import '../../providers/to_do.dart';
 
 class ToDoItem extends StatefulWidget {
-  final String text;
-  bool isDone;
+  final ToDo toDo;
 
-  ToDoItem({
+  const ToDoItem({
     super.key,
-    required this.text,
-    required this.isDone,
+    required this.toDo,
   });
 
   @override
@@ -28,26 +27,26 @@ class _ToDoItemState extends State<ToDoItem> {
       child: ListTile(
         onTap: () {
           setState(() {
-            widget.isDone = !widget.isDone;
+            widget.toDo.isDone = !widget.toDo.isDone;
           });
         },
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         horizontalTitleGap: 0,
         title: Text(
-          widget.text,
+          widget.toDo.text,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.montserrat(
             fontSize: 16,
             fontWeight: FontWeight.w400,
-            color: widget.isDone
+            color: widget.toDo.isDone
                 ? MyColors.white.withOpacity(0.5)
                 : MyColors.white,
-            decoration: widget.isDone ? TextDecoration.lineThrough : null,
+            decoration: widget.toDo.isDone ? TextDecoration.lineThrough : null,
           ),
         ),
         leading: Icon(
-          widget.isDone
+          widget.toDo.isDone
               ? Icons.check_box_rounded
               : Icons.check_box_outline_blank_rounded,
           color: MyColors.white,

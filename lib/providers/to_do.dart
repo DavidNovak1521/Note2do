@@ -1,4 +1,6 @@
-class ToDo {
+import 'package:flutter/foundation.dart';
+
+class ToDo with ChangeNotifier {
   final String id;
   final String text;
   bool isDone;

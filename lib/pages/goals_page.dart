@@ -48,8 +48,7 @@ class GoalsPage extends StatelessWidget {
               (context, index) => Container(
                 margin: const EdgeInsets.only(bottom: 15),
                 child: GoalItem(
-                  text: goals[index].text,
-                  isDone: goals[index].isDone,
+                  goal: goals[index],
                 ),
               ),
             ),

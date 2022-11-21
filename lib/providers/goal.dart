@@ -1,4 +1,6 @@
-class Goal {
+import 'package:flutter/foundation.dart';
+
+class Goal with ChangeNotifier {
   final String id;
   final String text;
   bool isDone;

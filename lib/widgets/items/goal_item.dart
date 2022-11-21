@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../style/my_colors.dart';
+import '../../providers/goal.dart';
 
 class GoalItem extends StatefulWidget {
-  final String text;
-  bool isDone;
+  final Goal goal;
 
-  GoalItem({
+  const GoalItem({
     super.key,
-    required this.text,
-    required this.isDone,
+    required this.goal,
   });
 
   @override
@@ -28,23 +27,23 @@ class _GoalItemState extends State<GoalItem> {
       child: ListTile(
         onTap: () {
           setState(() {
-            widget.isDone = !widget.isDone;
+            widget.goal.isDone = !widget.goal.isDone;
           });
         },
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         horizontalTitleGap: 0,
         title: Text(
-          widget.text,
+          widget.goal.text,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.montserrat(
             fontSize: 16,
-            fontWeight: widget.isDone ? FontWeight.w600 : FontWeight.w400,
+            fontWeight: widget.goal.isDone ? FontWeight.w600 : FontWeight.w400,
             color: MyColors.white,
           ),
         ),
         leading: Icon(
-          widget.isDone
+          widget.goal.isDone
               ? Icons.check_box_rounded
               : Icons.check_box_outline_blank_rounded,
           color: MyColors.white,
