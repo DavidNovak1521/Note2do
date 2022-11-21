@@ -62,6 +62,12 @@ class ToDos with ChangeNotifier {
     return [..._toDos];
   }
 
+  void refreshTodo(ToDo data) {
+    final index = _toDos.indexOf(data);
+    _toDos[index] = data;
+    notifyListeners();
+  }
+
   void addToDo() {
     // _toDos.add(value);
     notifyListeners();

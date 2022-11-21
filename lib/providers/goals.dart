@@ -62,6 +62,12 @@ class Goals with ChangeNotifier {
     return [..._goals];
   }
 
+  void refreshTodo(Goal data) {
+    final index = _goals.indexOf(data);
+    _goals[index] = data;
+    notifyListeners();
+  }
+
   void addGoal() {
     // _goals.add(value);
     notifyListeners();

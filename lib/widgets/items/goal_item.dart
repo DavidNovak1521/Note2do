@@ -19,7 +19,7 @@ class GoalItem extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          goal.changeDoneStatus();
+          goal.changeDoneStatus(context);
         },
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         horizontalTitleGap: 0,

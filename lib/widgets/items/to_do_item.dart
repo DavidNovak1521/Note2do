@@ -19,7 +19,7 @@ class ToDoItem extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          toDo.changeDoneStatus();
+          toDo.changeDoneStatus(context);
         },
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         horizontalTitleGap: 0,

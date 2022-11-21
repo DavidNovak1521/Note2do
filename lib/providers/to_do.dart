@@ -1,4 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'to_dos.dart';
 
 class ToDo with ChangeNotifier {
   final String id;
@@ -11,8 +14,9 @@ class ToDo with ChangeNotifier {
     required this.isDone,
   });
 
-  void changeDoneStatus() {
+  void changeDoneStatus(BuildContext context) {
     isDone = !isDone;
     notifyListeners();
+    Provider.of<ToDos>(context, listen: false).refreshTodo(this);
   }
 }

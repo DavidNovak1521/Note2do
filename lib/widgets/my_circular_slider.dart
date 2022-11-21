@@ -30,7 +30,7 @@ class _MyCircularSliderState extends State<MyCircularSlider> {
         size: MediaQuery.of(context).size.width * 0.20,
         angleRange: 360,
         startAngle: 270,
-        animDurationMultiplier: 2,
+        animationEnabled: false,
         customWidths: CustomSliderWidths(
           progressBarWidth: 6,
           trackWidth: 6,

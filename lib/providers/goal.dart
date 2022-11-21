@@ -1,4 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'goals.dart';
 
 class Goal with ChangeNotifier {
   final String id;
@@ -11,8 +14,9 @@ class Goal with ChangeNotifier {
     required this.isDone,
   });
 
-  void changeDoneStatus() {
+  void changeDoneStatus(BuildContext context) {
     isDone = !isDone;
     notifyListeners();
+    Provider.of<Goals>(context, listen: false).refreshTodo(this);
   }
 }
