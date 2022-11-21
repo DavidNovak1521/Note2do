@@ -10,4 +10,9 @@ class ToDo with ChangeNotifier {
     required this.text,
     required this.isDone,
   });
+
+  void changeDoneStatus() {
+    isDone = !isDone;
+    notifyListeners();
+  }
 }

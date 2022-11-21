@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../style/my_colors.dart';
 import '../../providers/goal.dart';
 
-class GoalItem extends StatefulWidget {
-  final Goal goal;
+class GoalItem extends StatelessWidget {
+  const GoalItem({super.key});
 
-  const GoalItem({
-    super.key,
-    required this.goal,
-  });
-
-  @override
-  State<GoalItem> createState() => _GoalItemState();
-}
-
-class _GoalItemState extends State<GoalItem> {
   @override
   Widget build(BuildContext context) {
+    final goal = Provider.of<Goal>(context);
+
     return Container(
       decoration: BoxDecoration(
         color: MyColors.tertiaryBlue,
@@ -26,24 +19,22 @@ class _GoalItemState extends State<GoalItem> {
       ),
       child: ListTile(
         onTap: () {
-          setState(() {
-            widget.goal.isDone = !widget.goal.isDone;
-          });
+          goal.changeDoneStatus();
         },
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         horizontalTitleGap: 0,
         title: Text(
-          widget.goal.text,
+          goal.text,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.montserrat(
             fontSize: 16,
-            fontWeight: widget.goal.isDone ? FontWeight.w600 : FontWeight.w400,
+            fontWeight: goal.isDone ? FontWeight.w600 : FontWeight.w400,
             color: MyColors.white,
           ),
         ),
         leading: Icon(
-          widget.goal.isDone
+          goal.isDone
               ? Icons.check_box_rounded
               : Icons.check_box_outline_blank_rounded,
           color: MyColors.white,
