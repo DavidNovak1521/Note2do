@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../style/my_colors.dart';
@@ -20,8 +21,8 @@ class GoalsPage extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.width * 0.25,
               child: Row(
                 children: [
                   const Expanded(
@@ -30,11 +31,21 @@ class GoalsPage extends StatelessWidget {
                   Expanded(
                     child: Align(
                       alignment: Alignment.center,
-                      child: MyCircularSlider(
-                        initValue: numberOfDone.toDouble(),
-                        maxValue: goals.length.toDouble(),
-                        color: MyColors.tertiaryBlue,
-                      ),
+                      child: (goals.isNotEmpty)
+                          ? MyCircularSlider(
+                              initValue: numberOfDone.toDouble(),
+                              maxValue: goals.length.toDouble(),
+                              color: MyColors.tertiaryBlue,
+                            )
+                          : Text(
+                              'No goals!\nCreate one.',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.montserrat(
+                                color: MyColors.dark,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                     ),
                   ),
                 ],
