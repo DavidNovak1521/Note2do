@@ -25,7 +25,10 @@ class NotesPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               childCount: favoriteNotes.length,
               (context, index) => Dismissible(
-                key: ValueKey<int>(index),
+                key: ValueKey(favoriteNotes[index].id),
+                onDismissed: (direction) =>
+                    Provider.of<Notes>(context, listen: false)
+                        .removeNote(favoriteNotes[index].id),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
