@@ -44,11 +44,14 @@ class ToDosPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: toDos.length,
-              (context, index) => Container(
-                margin: const EdgeInsets.only(bottom: 15),
-                child: ChangeNotifierProvider(
-                  create: (context) => toDos[index],
-                  child: const ToDoItem(),
+              (context, index) => Dismissible(
+                key: ValueKey<int>(index),
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 15),
+                  child: ChangeNotifierProvider.value(
+                    value: toDos[index],
+                    child: const ToDoItem(),
+                  ),
                 ),
               ),
             ),

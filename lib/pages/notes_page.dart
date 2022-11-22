@@ -24,11 +24,14 @@ class NotesPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: favoriteNotes.length,
-              (context, index) => Container(
-                margin: const EdgeInsets.symmetric(vertical: 7.5),
-                child: NoteItem(
-                  title: favoriteNotes[index].title,
-                  text: favoriteNotes[index].text,
+              (context, index) => Dismissible(
+                key: ValueKey<int>(index),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
+                  child: ChangeNotifierProvider.value(
+                    value: favoriteNotes[index],
+                    child: NoteItem(),
+                  ),
                 ),
               ),
             ),
@@ -42,11 +45,14 @@ class NotesPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: notes.length,
-              (context, index) => Container(
-                margin: const EdgeInsets.symmetric(vertical: 7.5),
-                child: NoteItem(
-                  title: notes[index].title,
-                  text: notes[index].text,
+              (context, index) => Dismissible(
+                key: ValueKey<int>(index),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
+                  child: ChangeNotifierProvider.value(
+                    value: notes[index],
+                    child: NoteItem(),
+                  ),
                 ),
               ),
             ),
