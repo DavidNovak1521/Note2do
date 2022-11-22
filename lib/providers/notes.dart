@@ -80,4 +80,9 @@ class Notes with ChangeNotifier {
     _notes[index] = data;
     notifyListeners();
   }
+
+  void removeNote(String toRemove) {
+    _notes.removeWhere((note) => note.id == toRemove);
+    notifyListeners();
+  }
 }

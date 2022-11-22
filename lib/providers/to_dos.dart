@@ -68,8 +68,8 @@ class ToDos with ChangeNotifier {
     notifyListeners();
   }
 
-  void addToDo() {
-    // _toDos.add(value);
+  void removeToDo(String toRemove) {
+    _toDos.removeWhere((todo) => todo.id == toRemove);
     notifyListeners();
   }
 }

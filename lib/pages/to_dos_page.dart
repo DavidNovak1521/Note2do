@@ -45,7 +45,10 @@ class ToDosPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               childCount: toDos.length,
               (context, index) => Dismissible(
-                key: ValueKey<int>(index),
+                key: ValueKey(toDos[index].id),
+                onDismissed: (direction) =>
+                    Provider.of<ToDos>(context, listen: false)
+                        .removeToDo(toDos[index].id),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 15),
                   child: ChangeNotifierProvider.value(

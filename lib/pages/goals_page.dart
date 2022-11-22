@@ -45,7 +45,10 @@ class GoalsPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               childCount: goals.length,
               (context, index) => Dismissible(
-                key: ValueKey<int>(index),
+                key: ValueKey(goals[index].id),
+                onDismissed: (direction) =>
+                    Provider.of<Goals>(context, listen: false)
+                        .removeGoal(goals[index].id),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 15),
                   child: ChangeNotifierProvider.value(

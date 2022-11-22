@@ -68,8 +68,8 @@ class Goals with ChangeNotifier {
     notifyListeners();
   }
 
-  void addGoal() {
-    // _goals.add(value);
+  void removeGoal(String toRemove) {
+    _goals.removeWhere((goal) => goal.id == toRemove);
     notifyListeners();
   }
 }
