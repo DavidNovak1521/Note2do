@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../style/my_colors.dart';
@@ -102,13 +101,3 @@ class _NewNotePageState extends State<NewNotePage> {
 Widget renderNewNote() {
   return Container();
 }
-
-
-// class NewNote extends StatelessWidget {
-//   const NewNote({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(child: Text('NewNote'),);
-//   }
-// }
