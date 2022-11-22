@@ -55,19 +55,29 @@ class Notes with ChangeNotifier {
     ),
     Note(
       id: 'n9',
-      title: 'Cím 9',
+      title: 'Kedvenc 1',
       text: 'Valami szöveg',
-      isFavorite: false,
+      isFavorite: true,
     ),
     Note(
       id: 'n10',
-      title: 'Cím 10',
+      title: 'Kedvenc 2',
       text: 'Valami szöveg',
-      isFavorite: false,
+      isFavorite: true,
     ),
   ];
 
   List<Note> get notes {
-    return [..._notes];
+    return [..._notes.where((note) => !note.isFavorite)];
+  }
+
+  List<Note> get favoriteNotes {
+    return [..._notes.where((note) => note.isFavorite)];
+  }
+
+  void refreshNote(Note data) {
+    final index = _notes.indexOf(data);
+    _notes[index] = data;
+    notifyListeners();
   }
 }

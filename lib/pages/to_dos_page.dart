@@ -8,7 +8,6 @@ import '../widgets/items/to_do_item.dart';
 import '../widgets/my_circular_slider.dart';
 import '../providers/to_dos.dart';
 
-// ignore: must_be_immutable
 class ToDosPage extends StatelessWidget {
   const ToDosPage({super.key});
 
@@ -44,7 +43,7 @@ class ToDosPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: 10,
+              childCount: toDos.length,
               (context, index) => Container(
                 margin: const EdgeInsets.only(bottom: 15),
                 child: ChangeNotifierProvider(
