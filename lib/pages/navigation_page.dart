@@ -32,7 +32,7 @@ class _NavigationPageState extends State<NavigationPage> {
       'icon': const SizedBox(),
     },
     {
-      'label': 'To Do',
+      'label': 'To do',
       'page': const ToDosTab(),
       'icon': const Icon(Icons.work_rounded),
     },

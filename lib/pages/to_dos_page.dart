@@ -26,7 +26,7 @@ class ToDosPage extends StatelessWidget {
               child: Row(
                 children: [
                   const Expanded(
-                    child: MyTitleText(text: 'To Do\'s'),
+                    child: MyTitleText(text: 'To do\'s'),
                   ),
                   Expanded(
                     child: Align(

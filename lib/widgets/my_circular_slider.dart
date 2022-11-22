@@ -38,7 +38,7 @@ class _MyCircularSliderState extends State<MyCircularSlider> {
         ),
         customColors: CustomSliderColors(
           hideShadow: true,
-          trackColor: MyColors.grey,
+          trackColor: MyColors.grey2,
           progressBarColor: widget.color,
           dotColor: widget.color,
         ),
