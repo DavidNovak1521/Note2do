@@ -5,9 +5,12 @@ import '../style/my_colors.dart';
 
 class MyTitleText extends StatelessWidget {
   final String text;
+  final bool smaller;
+
   const MyTitleText({
     super.key,
     required this.text,
+    this.smaller = false,
   });
 
   @override
@@ -18,7 +21,7 @@ class MyTitleText extends StatelessWidget {
         text,
         style: GoogleFonts.montserrat(
           color: MyColors.dark,
-          fontSize: 30,
+          fontSize: smaller ? 24 : 30,
           fontWeight: FontWeight.w700,
         ),
       ),
