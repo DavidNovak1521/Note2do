@@ -5,13 +5,22 @@ import 'package:google_fonts/google_fonts.dart';
 import '../style/my_colors.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
+import '../widgets/inputs/new_note.dart';
+import '../widgets/inputs/new_to_do.dart';
+import '../widgets/inputs/new_goal.dart';
 
 enum NoteType { note, todo, goal }
 
-Map<NoteType, Widget> segments = {
-  NoteType.note: Container(),
-  NoteType.todo: Container(),
-  NoteType.goal: Container(),
+Map<NoteType, Widget> renderTextField = {
+  NoteType.note: NewNote(),
+  NoteType.todo: NewToDo(),
+  NoteType.goal: NewGoal(),
+};
+
+Map<NoteType, String> typeName = {
+  NoteType.note: 'Note',
+  NoteType.todo: 'To do',
+  NoteType.goal: 'Goal',
 };
 
 final segmentTextStyle = GoogleFonts.montserrat(
@@ -36,7 +45,7 @@ class _NewNotePageState extends State<NewNotePage> {
       needsMask: false,
       child: Column(
         children: [
-          const MyTitleText(text: 'New Note'),
+          MyTitleText(text: 'New ${typeName[_selectedSegment]}'),
           SizedBox(
             width: double.infinity,
             child: CupertinoSlidingSegmentedControl(
@@ -71,9 +80,7 @@ class _NewNotePageState extends State<NewNotePage> {
             color: Colors.transparent,
           ),
           Expanded(
-            child: Center(
-              child: Text('Selected: ${_selectedSegment.name}'),
-            ),
+            child: renderTextField[_selectedSegment]!,
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 15),
@@ -85,7 +92,9 @@ class _NewNotePageState extends State<NewNotePage> {
                 backgroundColor: MyColors.primaryBlue,
                 foregroundColor: MyColors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               child: const Icon(
                 Icons.done_rounded,
                 size: 40,
@@ -96,8 +105,4 @@ class _NewNotePageState extends State<NewNotePage> {
       ),
     );
   }
-}
-
-Widget renderNewNote() {
-  return Container();
 }
