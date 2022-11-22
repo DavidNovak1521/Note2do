@@ -8,22 +8,39 @@ class NewNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: TextField(
-        // controller: will be,
-        style: GoogleFonts.montserrat(
-          color: MyColors.dark,
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+    return Column(
+      children: [
+        TextField(
+          // controller: will be,
+          style: GoogleFonts.montserrat(
+            color: MyColors.dark,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+          cursorColor: MyColors.dark,
+          textAlign: TextAlign.center,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: 'Write a title ...',
+          ),
         ),
-        cursorColor: MyColors.dark,
-        textAlign: TextAlign.center,
-        textCapitalization: TextCapitalization.sentences,
-        decoration: const InputDecoration(
-          border: InputBorder.none,
-          hintText: 'Write a new note ...',
+        TextField(
+          // controller: will be,
+          style: GoogleFonts.montserrat(
+            color: MyColors.dark,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+          cursorColor: MyColors.dark,
+          textAlign: TextAlign.start,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: 'Write a new note ...',
+          ),
         ),
-      ),
+      ],
     );
   }
 }
