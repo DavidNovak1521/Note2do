@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import './routes/app_routes.dart';
+import './providers/notes.dart';
 import './providers/to_dos.dart';
 import './providers/goals.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => Notes()),
         ChangeNotifierProvider(create: (context) => ToDos()),
         ChangeNotifierProvider(create: (context) => Goals()),
       ],
