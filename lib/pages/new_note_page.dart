@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../style/my_colors.dart';
@@ -33,6 +34,7 @@ class _NewNotePageState extends State<NewNotePage> {
   @override
   Widget build(BuildContext context) {
     return BasicPageContainer(
+      needsMask: false,
       child: Column(
         children: [
           const MyTitleText(text: 'New Note'),
@@ -66,12 +68,29 @@ class _NewNotePageState extends State<NewNotePage> {
             ),
           ),
           const Divider(
-            height: 20,
+            height: 15,
             color: Colors.transparent,
           ),
           Expanded(
             child: Center(
               child: Text('Selected: ${_selectedSegment.name}'),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 15),
+            alignment: Alignment.centerRight,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(10),
+                backgroundColor: MyColors.primaryBlue,
+                foregroundColor: MyColors.white,
+              ),
+              onPressed: () {},
+              child: const Icon(
+                Icons.done_rounded,
+                size: 40,
+              ),
             ),
           ),
         ],
