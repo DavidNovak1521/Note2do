@@ -4,14 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../style/my_colors.dart';
 
 class NewNote extends StatelessWidget {
-  const NewNote({super.key});
+  final TextEditingController titleCont;
+  final TextEditingController textCont;
+  const NewNote({
+    super.key,
+    required this.titleCont,
+    required this.textCont,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TextField(
-          // controller: will be,
+          controller: titleCont,
           style: GoogleFonts.montserrat(
             color: MyColors.dark,
             fontSize: 16,
@@ -26,7 +32,7 @@ class NewNote extends StatelessWidget {
           ),
         ),
         TextField(
-          // controller: will be,
+          controller: textCont,
           style: GoogleFonts.montserrat(
             color: MyColors.dark,
             fontSize: 16,

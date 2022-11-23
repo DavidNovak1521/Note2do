@@ -76,6 +76,18 @@ class Goals with ChangeNotifier {
     notifyListeners();
   }
 
+  void addGoal(String toAdd) {
+    _goals.insert(
+      0,
+      Goal(
+        id: DateTime.now().toString(),
+        text: toAdd,
+        isDone: false,
+      ),
+    );
+    notifyListeners();
+  }
+
   void removeGoal(String toRemove) {
     _goals.removeWhere((goal) => goal.id == toRemove);
     notifyListeners();

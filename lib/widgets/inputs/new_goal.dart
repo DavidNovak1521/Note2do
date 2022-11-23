@@ -4,13 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../style/my_colors.dart';
 
 class NewGoal extends StatelessWidget {
-  const NewGoal({super.key});
+  final TextEditingController textCont;
+
+  const NewGoal({super.key, required this.textCont});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: TextField(
-        // controller: will be,
+        controller: textCont,
         style: GoogleFonts.montserrat(
           color: MyColors.dark,
           fontSize: 16,

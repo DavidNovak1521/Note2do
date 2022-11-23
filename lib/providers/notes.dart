@@ -89,6 +89,19 @@ class Notes with ChangeNotifier {
     notifyListeners();
   }
 
+  void addNote(String titleToAdd, String textToAdd) {
+    _notes.insert(
+      0,
+      Note(
+        id: DateTime.now().toString(),
+        title: titleToAdd,
+        text: textToAdd,
+        isFavorite: false,
+      ),
+    );
+    notifyListeners();
+  }
+
   void removeNote(String toRemove) {
     _notes.removeWhere((note) => note.id == toRemove);
     notifyListeners();

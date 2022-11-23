@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note2do/pages/new_note_page.dart';
 
 import './to_do.dart';
 
@@ -95,6 +96,19 @@ class ToDos with ChangeNotifier {
   void refreshTodo(ToDo data) {
     final index = _toDos.indexOf(data);
     _toDos[index] = data;
+    notifyListeners();
+  }
+
+  void addToDo(String toAdd) {
+    _toDos.insert(
+      0,
+      ToDo(
+        id: DateTime.now().toString(),
+        text: toAdd,
+        type: ToDoType.day,
+        isDone: false,
+      ),
+    );
     notifyListeners();
   }
 
