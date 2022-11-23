@@ -17,8 +17,10 @@ class ToDosPage extends StatelessWidget {
     final toDosDay = Provider.of<ToDos>(context).toDosDay;
     final toDosWeek = Provider.of<ToDos>(context).toDosWeek;
     final toDosMonth = Provider.of<ToDos>(context).toDosMonth;
-    final toDos = Provider.of<ToDos>(context).toDos;
-    final int numberOfDone = toDos.where((todo) => todo.isDone).length;
+    final int numberOfDoneDay = toDosDay.where((todo) => todo.isDone).length;
+    final int numberOfDoneWeek = toDosWeek.where((todo) => todo.isDone).length;
+    final int numberOfDoneMonth =
+        toDosMonth.where((todo) => todo.isDone).length;
 
     return BasicPageContainer(
       child: CustomScrollView(
@@ -28,17 +30,38 @@ class ToDosPage extends StatelessWidget {
               height: MediaQuery.of(context).size.width * 0.25,
               child: Row(
                 children: [
-                  const Expanded(
-                    child: MyTitleText(text: 'To do\'s'),
-                  ),
+                  const MyTitleText(text: 'To do\'s'),
                   Expanded(
                     child: Align(
                       alignment: Alignment.center,
-                      child: (toDos.isNotEmpty)
-                          ? MyCircularSlider(
-                              initValue: numberOfDone.toDouble(),
-                              maxValue: toDos.length.toDouble(),
-                              color: MyColors.secondaryBlue,
+                      child: (toDosDay.isNotEmpty ||
+                              toDosDay.isNotEmpty ||
+                              toDosMonth.isNotEmpty)
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                toDosDay.isNotEmpty
+                                    ? MyCircularSlider(
+                                        initValue: numberOfDoneDay.toDouble(),
+                                        maxValue: toDosDay.length.toDouble(),
+                                        color: MyColors.secondaryBlue,
+                                      )
+                                    : Container(),
+                                toDosWeek.isNotEmpty
+                                    ? MyCircularSlider(
+                                        initValue: numberOfDoneWeek.toDouble(),
+                                        maxValue: toDosWeek.length.toDouble(),
+                                        color: MyColors.secondaryBlue,
+                                      )
+                                    : Container(),
+                                toDosMonth.isNotEmpty
+                                    ? MyCircularSlider(
+                                        initValue: numberOfDoneMonth.toDouble(),
+                                        maxValue: toDosMonth.length.toDouble(),
+                                        color: MyColors.secondaryBlue,
+                                      )
+                                    : Container(),
+                              ],
                             )
                           : Text(
                               'No to do\'s!\nCreate one.',

@@ -36,6 +36,7 @@ class GoalsPage extends StatelessWidget {
                               initValue: numberOfDone.toDouble(),
                               maxValue: goals.length.toDouble(),
                               color: MyColors.tertiaryBlue,
+                              bigger: true,
                             )
                           : Text(
                               'No goals!\nCreate one.',

@@ -8,11 +8,14 @@ class MyCircularSlider extends StatefulWidget {
   final double maxValue;
   final double initValue;
   final Color color;
+  final bool bigger;
+
   const MyCircularSlider({
     super.key,
     required this.maxValue,
     required this.initValue,
     required this.color,
+    this.bigger = false,
   });
 
   @override
@@ -27,7 +30,9 @@ class _MyCircularSliderState extends State<MyCircularSlider> {
       max: widget.maxValue,
       initialValue: widget.initValue,
       appearance: CircularSliderAppearance(
-        size: MediaQuery.of(context).size.width * 0.20,
+        size: widget.bigger
+            ? MediaQuery.of(context).size.width * 0.20
+            : MediaQuery.of(context).size.width * 0.15,
         angleRange: 360,
         startAngle: 270,
         animationEnabled: false,
