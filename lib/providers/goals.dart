@@ -62,6 +62,14 @@ class Goals with ChangeNotifier {
     return [..._goals];
   }
 
+  List<Goal> get notesTop5 {
+    if (_goals.length >= 5) {
+      return [..._goals.take(5)];
+    } else {
+      return [..._goals];
+    }
+  }
+
   void refreshTodo(Goal data) {
     final index = _goals.indexOf(data);
     _goals[index] = data;

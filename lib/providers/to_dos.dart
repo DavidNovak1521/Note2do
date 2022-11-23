@@ -62,6 +62,14 @@ class ToDos with ChangeNotifier {
     return [..._toDos];
   }
 
+  List<ToDo> get notesTop5 {
+    if (_toDos.length >= 5) {
+      return [..._toDos.take(5)];
+    } else {
+      return [..._toDos];
+    }
+  }
+
   void refreshTodo(ToDo data) {
     final index = _toDos.indexOf(data);
     _toDos[index] = data;

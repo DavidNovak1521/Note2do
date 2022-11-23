@@ -16,7 +16,9 @@ class MyTitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
+      padding: smaller
+          ? const EdgeInsets.symmetric(vertical: 10)
+          : const EdgeInsets.symmetric(vertical: 15),
       child: Text(
         text,
         style: GoogleFonts.montserrat(

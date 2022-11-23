@@ -75,6 +75,14 @@ class Notes with ChangeNotifier {
     return [..._notes.where((note) => note.isFavorite)];
   }
 
+  List<Note> get notesTop5 {
+    if (_notes.length >= 5) {
+      return [..._notes.take(5)];
+    } else {
+      return [..._notes];
+    }
+  }
+
   void refreshNote(Note data) {
     final index = _notes.indexOf(data);
     _notes[index] = data;
