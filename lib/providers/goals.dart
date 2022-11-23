@@ -62,7 +62,7 @@ class Goals with ChangeNotifier {
     return [..._goals];
   }
 
-  List<Goal> get notesTop5 {
+  List<Goal> get goalsTop5 {
     if (_goals.length >= 5) {
       return [..._goals.take(5)];
     } else {

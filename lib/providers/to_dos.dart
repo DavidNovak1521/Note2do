@@ -8,52 +8,62 @@ class ToDos with ChangeNotifier {
     ToDo(
       id: 'td1',
       text: 'Első teendő',
-      isDone: true,
-    ),
-    ToDo(
-      id: 'td2',
-      text: 'Második, de már hosszabb teendő',
+      type: ToDoType.day,
       isDone: true,
     ),
     ToDo(
       id: 'td3',
       text: 'Harmadik, de még az előzőnél is hosszabb teendő tesztelni',
+      type: ToDoType.week,
+      isDone: true,
+    ),
+    ToDo(
+      id: 'td2',
+      text: 'Második, de már hosszabb teendő',
+      type: ToDoType.day,
       isDone: false,
     ),
     ToDo(
       id: 'td4',
       text:
           'Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő. Ez pedig a leghosszabb teendő.',
+      type: ToDoType.month,
       isDone: false,
     ),
     ToDo(
       id: 'td5',
       text: 'Valami teendő 5',
-      isDone: false,
+      type: ToDoType.month,
+      isDone: true,
     ),
     ToDo(
       id: 'td6',
       text: 'Valami teendő 6',
+      type: ToDoType.month,
       isDone: false,
     ),
     ToDo(
       id: 'td7',
       text: 'Valami teendő 7',
+      type: ToDoType.month,
       isDone: false,
     ),
     ToDo(
       id: 'td8',
       text: 'Valami teendő 8',
+      type: ToDoType.month,
       isDone: false,
     ),
     ToDo(
       id: 'td9',
       text: 'Valami teendő 9',
+      type: ToDoType.month,
       isDone: false,
     ),
     ToDo(
       id: 'td10',
       text: 'Valami teendő 10',
+      type: ToDoType.month,
       isDone: false,
     ),
   ];
@@ -62,7 +72,19 @@ class ToDos with ChangeNotifier {
     return [..._toDos];
   }
 
-  List<ToDo> get notesTop5 {
+  List<ToDo> get toDosDay {
+    return [..._toDos.where((todo) => todo.type == ToDoType.day)];
+  }
+
+  List<ToDo> get toDosWeek {
+    return [..._toDos.where((todo) => todo.type == ToDoType.week)];
+  }
+
+  List<ToDo> get toDosMonth {
+    return [..._toDos.where((todo) => todo.type == ToDoType.month)];
+  }
+
+  List<ToDo> get toDosTop5 {
     if (_toDos.length >= 5) {
       return [..._toDos.take(5)];
     } else {

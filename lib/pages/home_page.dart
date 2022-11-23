@@ -17,8 +17,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // final favoriteNotes = Provider.of<Notes>(context).favoriteNotes;
     final notes = Provider.of<Notes>(context).notesTop5;
-    final toDos = Provider.of<ToDos>(context).notesTop5;
-    final goals = Provider.of<Goals>(context).notesTop5;
+    final toDos = Provider.of<ToDos>(context).toDosTop5;
+    final goals = Provider.of<Goals>(context).goalsTop5;
 
     return BasicPageContainer(
       needsPadding: false,

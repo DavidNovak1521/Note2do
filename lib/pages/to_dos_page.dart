@@ -14,6 +14,9 @@ class ToDosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final toDosDay = Provider.of<ToDos>(context).toDosDay;
+    final toDosWeek = Provider.of<ToDos>(context).toDosWeek;
+    final toDosMonth = Provider.of<ToDos>(context).toDosMonth;
     final toDos = Provider.of<ToDos>(context).toDos;
     final int numberOfDone = toDos.where((todo) => todo.isDone).length;
 
@@ -52,18 +55,123 @@ class ToDosPage extends StatelessWidget {
               ),
             ),
           ),
+          // DAY
+          SliverToBoxAdapter(
+            child: (toDosDay.isNotEmpty)
+                ? Row(
+                    children: [
+                      Text(
+                        'Today',
+                        style: GoogleFonts.montserrat(
+                          color: MyColors.dark,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          height: 30,
+                          color: MyColors.dark,
+                        ),
+                      ),
+                    ],
+                  )
+                : null,
+          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: toDos.length,
+              childCount: toDosDay.length,
               (context, index) => Dismissible(
-                key: ValueKey(toDos[index].id),
+                key: ValueKey(toDosDay[index].id),
                 onDismissed: (direction) =>
                     Provider.of<ToDos>(context, listen: false)
-                        .removeToDo(toDos[index].id),
+                        .removeToDo(toDosDay[index].id),
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 15),
                   child: ChangeNotifierProvider.value(
-                    value: toDos[index],
+                    value: toDosDay[index],
+                    child: const ToDoItem(),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // WEEK
+          SliverToBoxAdapter(
+            child: (toDosWeek.isNotEmpty)
+                ? Row(
+                    children: [
+                      Text(
+                        'This week',
+                        style: GoogleFonts.montserrat(
+                          color: MyColors.dark,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          height: 30,
+                          color: MyColors.dark,
+                        ),
+                      ),
+                    ],
+                  )
+                : null,
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: toDosWeek.length,
+              (context, index) => Dismissible(
+                key: ValueKey(toDosWeek[index].id),
+                onDismissed: (direction) =>
+                    Provider.of<ToDos>(context, listen: false)
+                        .removeToDo(toDosWeek[index].id),
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 15),
+                  child: ChangeNotifierProvider.value(
+                    value: toDosWeek[index],
+                    child: const ToDoItem(),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // MONTH
+          SliverToBoxAdapter(
+            child: (toDosMonth.isNotEmpty)
+                ? Row(
+                    children: [
+                      Text(
+                        'This month',
+                        style: GoogleFonts.montserrat(
+                          color: MyColors.dark,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          height: 30,
+                          color: MyColors.dark,
+                        ),
+                      ),
+                    ],
+                  )
+                : null,
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: toDosMonth.length,
+              (context, index) => Dismissible(
+                key: ValueKey(toDosMonth[index].id),
+                onDismissed: (direction) =>
+                    Provider.of<ToDos>(context, listen: false)
+                        .removeToDo(toDosMonth[index].id),
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 15),
+                  child: ChangeNotifierProvider.value(
+                    value: toDosMonth[index],
                     child: const ToDoItem(),
                   ),
                 ),
