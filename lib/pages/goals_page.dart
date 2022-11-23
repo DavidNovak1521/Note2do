@@ -70,6 +70,12 @@ class GoalsPage extends StatelessWidget {
               ),
             ),
           ),
+          const SliverToBoxAdapter(
+            child: Divider(
+              height: 30,
+              color: Colors.transparent,
+            ),
+          ),
         ],
       ),
     );

@@ -40,6 +40,13 @@ class NoteItem extends StatelessWidget {
             color: MyColors.white.withOpacity(0.5),
           ),
         ),
+        trailing: IconButton(
+          onPressed: () => note.changeFavoriteStatus(context),
+          icon: Icon(note.isFavorite
+              ? Icons.star_rounded
+              : Icons.star_outline_rounded),
+          color: MyColors.white,
+        ),
       ),
     );
   }

@@ -16,7 +16,7 @@ class Note with ChangeNotifier {
     required this.isFavorite,
   });
 
-  void changeDoneStatus(BuildContext context) {
+  void changeFavoriteStatus(BuildContext context) {
     isFavorite = !isFavorite;
     notifyListeners();
     Provider.of<Notes>(context, listen: false).refreshNote(this);
