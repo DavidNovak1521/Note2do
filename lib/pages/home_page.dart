@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:note2do/style/my_colors.dart';
 import 'package:provider/provider.dart';
 
+import '../style/my_colors.dart';
 import '../widgets/my_title_text.dart';
 import '../providers/notes.dart';
 import '../providers/to_dos.dart';
 import '../providers/goals.dart';
 import '../widgets/basic_page_container.dart';
+import '../widgets/my_horizontal_scroll.dart';
 
 const originalPadding = EdgeInsets.symmetric(horizontal: 15);
 
@@ -15,7 +16,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final favoriteNotes = Provider.of<Notes>(context).favoriteNotes;
     final notes = Provider.of<Notes>(context).notesTop5;
     final toDos = Provider.of<ToDos>(context).toDosTop5;
     final goals = Provider.of<Goals>(context).goalsTop5;
@@ -37,10 +37,10 @@ class HomePage extends StatelessWidget {
                 smaller: true,
               ),
             ),
-            HorizontalScroll(
+            MyHorizontalScroll(
               count: notes.length,
               color: MyColors.primaryBlue,
-              child: Container(),
+              labels: [...notes.map((note) => note.getTitle()).toList()],
             ),
             const Padding(
               padding: originalPadding,
@@ -49,10 +49,10 @@ class HomePage extends StatelessWidget {
                 smaller: true,
               ),
             ),
-            HorizontalScroll(
-              count: notes.length,
+            MyHorizontalScroll(
+              count: toDos.length,
               color: MyColors.secondaryBlue,
-              child: Container(),
+              labels: [...toDos.map((todo) => todo.getText()).toList()],
             ),
             const Padding(
               padding: originalPadding,
@@ -61,50 +61,16 @@ class HomePage extends StatelessWidget {
                 smaller: true,
               ),
             ),
-            HorizontalScroll(
-              count: notes.length,
+            MyHorizontalScroll(
+              count: goals.length,
               color: MyColors.tertiaryBlue,
-              child: Container(),
+              labels: [...goals.map((goal) => goal.getText()).toList()],
             ),
             const Divider(
               height: 30,
               color: Colors.transparent,
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class HorizontalScroll extends StatelessWidget {
-  final int count;
-  final Color color;
-  final Widget child;
-
-  const HorizontalScroll({
-    super.key,
-    required this.count,
-    required this.color,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.width * 2 / 5,
-      child: ListView.builder(
-        itemCount: count,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => Container(
-          width: MediaQuery.of(context).size.width * 2 / 5,
-          height: MediaQuery.of(context).size.width * 2 / 5,
-          margin: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: child,
         ),
       ),
     );

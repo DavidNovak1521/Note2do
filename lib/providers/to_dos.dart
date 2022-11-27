@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:note2do/pages/new_note_page.dart';
 
 import './to_do.dart';
 
@@ -13,16 +12,16 @@ class ToDos with ChangeNotifier {
       isDone: true,
     ),
     ToDo(
-      id: 'td3',
-      text: 'Harmadik, de még az előzőnél is hosszabb teendő tesztelni',
-      type: ToDoType.week,
-      isDone: true,
-    ),
-    ToDo(
       id: 'td2',
       text: 'Második, de már hosszabb teendő',
       type: ToDoType.day,
       isDone: false,
+    ),
+    ToDo(
+      id: 'td3',
+      text: 'Harmadik, de még az előzőnél is hosszabb teendő tesztelni',
+      type: ToDoType.week,
+      isDone: true,
     ),
     ToDo(
       id: 'td4',

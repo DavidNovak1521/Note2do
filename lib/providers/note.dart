@@ -16,6 +16,10 @@ class Note with ChangeNotifier {
     required this.isFavorite,
   });
 
+  String getTitle() {
+    return title;
+  }
+
   void changeFavoriteStatus(BuildContext context) {
     isFavorite = !isFavorite;
     notifyListeners();

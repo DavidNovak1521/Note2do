@@ -18,6 +18,10 @@ class ToDo with ChangeNotifier {
     required this.isDone,
   });
 
+  String getText() {
+    return text;
+  }
+
   void changeDoneStatus(BuildContext context) {
     isDone = !isDone;
     notifyListeners();
