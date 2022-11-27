@@ -11,198 +11,209 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:auto_route/empty_router_widgets.dart' as _i2;
-import 'package:flutter/material.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
 
-import '../pages/goals_page.dart' as _i7;
+import '../pages/goals_page.dart' as _i8;
 import '../pages/home_page.dart' as _i3;
 import '../pages/navigation_page.dart' as _i1;
-import '../pages/new_note_page.dart' as _i5;
-import '../pages/notes_page.dart' as _i4;
-import '../pages/to_dos_page.dart' as _i6;
+import '../pages/new_note_page.dart' as _i6;
+import '../pages/note_editing_page.dart' as _i4;
+import '../pages/notes_page.dart' as _i5;
+import '../pages/to_dos_page.dart' as _i7;
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppRouter extends _i9.RootStackRouter {
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     NavigationRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.NavigationPage(),
       );
     },
     HomeTab.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     NotesTab.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     NewNoteTab.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     ToDosTab.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     GoalsTab.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.EmptyRouterPage(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.HomePage(),
       );
     },
-    NotesRoute.name: (routeData) {
-      final args = routeData.argsAs<NotesRouteArgs>(
-          orElse: () => const NotesRouteArgs());
-      return _i8.MaterialPageX<dynamic>(
+    NoteEditingRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i4.NotesPage(key: args.key),
+        child: const _i4.NoteEditingPage(),
+      );
+    },
+    NotesRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i5.NotesPage(),
       );
     },
     NewNoteRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.NewNotePage(),
+        child: const _i6.NewNotePage(),
       );
     },
     ToDosRoute.name: (routeData) {
-      final args = routeData.argsAs<ToDosRouteArgs>(
-          orElse: () => const ToDosRouteArgs());
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i6.ToDosPage(key: args.key),
+        child: const _i7.ToDosPage(),
       );
     },
     GoalsRoute.name: (routeData) {
-      final args = routeData.argsAs<GoalsRouteArgs>(
-          orElse: () => const GoalsRouteArgs());
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i7.GoalsPage(key: args.key),
+        child: const _i8.GoalsPage(),
       );
     },
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(
+  List<_i9.RouteConfig> get routes => [
+        _i9.RouteConfig(
           '/#redirect',
           path: '/',
           redirectTo: '/navigation',
           fullMatch: true,
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           NavigationRoute.name,
           path: '/navigation',
           children: [
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               HomeTab.name,
               path: 'home',
               parent: NavigationRoute.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   '#redirect',
                   path: '',
                   parent: HomeTab.name,
                   redirectTo: 'default',
                   fullMatch: true,
                 ),
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   HomeRoute.name,
                   path: 'default',
                   parent: HomeTab.name,
                 ),
+                _i9.RouteConfig(
+                  NoteEditingRoute.name,
+                  path: 'editing',
+                  parent: HomeTab.name,
+                ),
               ],
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               NotesTab.name,
               path: 'notes',
               parent: NavigationRoute.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   '#redirect',
                   path: '',
                   parent: NotesTab.name,
                   redirectTo: 'default',
                   fullMatch: true,
                 ),
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   NotesRoute.name,
                   path: 'default',
                   parent: NotesTab.name,
                 ),
+                _i9.RouteConfig(
+                  NoteEditingRoute.name,
+                  path: 'editing',
+                  parent: NotesTab.name,
+                ),
               ],
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               NewNoteTab.name,
               path: 'new_note',
               parent: NavigationRoute.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   '#redirect',
                   path: '',
                   parent: NewNoteTab.name,
                   redirectTo: 'default',
                   fullMatch: true,
                 ),
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   NewNoteRoute.name,
                   path: 'default',
                   parent: NewNoteTab.name,
                 ),
               ],
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               ToDosTab.name,
               path: 'to_dos',
               parent: NavigationRoute.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   '#redirect',
                   path: '',
                   parent: ToDosTab.name,
                   redirectTo: 'default',
                   fullMatch: true,
                 ),
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   ToDosRoute.name,
                   path: 'default',
                   parent: ToDosTab.name,
                 ),
               ],
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               GoalsTab.name,
               path: 'goals',
               parent: NavigationRoute.name,
               children: [
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   '#redirect',
                   path: '',
                   parent: GoalsTab.name,
                   redirectTo: 'default',
                   fullMatch: true,
                 ),
-                _i8.RouteConfig(
+                _i9.RouteConfig(
                   GoalsRoute.name,
                   path: 'default',
                   parent: GoalsTab.name,
@@ -216,8 +227,8 @@ class AppRouter extends _i8.RootStackRouter {
 
 /// generated route for
 /// [_i1.NavigationPage]
-class NavigationRoute extends _i8.PageRouteInfo<void> {
-  const NavigationRoute({List<_i8.PageRouteInfo>? children})
+class NavigationRoute extends _i9.PageRouteInfo<void> {
+  const NavigationRoute({List<_i9.PageRouteInfo>? children})
       : super(
           NavigationRoute.name,
           path: '/navigation',
@@ -229,8 +240,8 @@ class NavigationRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class HomeTab extends _i8.PageRouteInfo<void> {
-  const HomeTab({List<_i8.PageRouteInfo>? children})
+class HomeTab extends _i9.PageRouteInfo<void> {
+  const HomeTab({List<_i9.PageRouteInfo>? children})
       : super(
           HomeTab.name,
           path: 'home',
@@ -242,8 +253,8 @@ class HomeTab extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class NotesTab extends _i8.PageRouteInfo<void> {
-  const NotesTab({List<_i8.PageRouteInfo>? children})
+class NotesTab extends _i9.PageRouteInfo<void> {
+  const NotesTab({List<_i9.PageRouteInfo>? children})
       : super(
           NotesTab.name,
           path: 'notes',
@@ -255,8 +266,8 @@ class NotesTab extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class NewNoteTab extends _i8.PageRouteInfo<void> {
-  const NewNoteTab({List<_i8.PageRouteInfo>? children})
+class NewNoteTab extends _i9.PageRouteInfo<void> {
+  const NewNoteTab({List<_i9.PageRouteInfo>? children})
       : super(
           NewNoteTab.name,
           path: 'new_note',
@@ -268,8 +279,8 @@ class NewNoteTab extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class ToDosTab extends _i8.PageRouteInfo<void> {
-  const ToDosTab({List<_i8.PageRouteInfo>? children})
+class ToDosTab extends _i9.PageRouteInfo<void> {
+  const ToDosTab({List<_i9.PageRouteInfo>? children})
       : super(
           ToDosTab.name,
           path: 'to_dos',
@@ -281,8 +292,8 @@ class ToDosTab extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EmptyRouterPage]
-class GoalsTab extends _i8.PageRouteInfo<void> {
-  const GoalsTab({List<_i8.PageRouteInfo>? children})
+class GoalsTab extends _i9.PageRouteInfo<void> {
+  const GoalsTab({List<_i9.PageRouteInfo>? children})
       : super(
           GoalsTab.name,
           path: 'goals',
@@ -294,7 +305,7 @@ class GoalsTab extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomePage]
-class HomeRoute extends _i8.PageRouteInfo<void> {
+class HomeRoute extends _i9.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -305,32 +316,32 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.NotesPage]
-class NotesRoute extends _i8.PageRouteInfo<NotesRouteArgs> {
-  NotesRoute({_i9.Key? key})
+/// [_i4.NoteEditingPage]
+class NoteEditingRoute extends _i9.PageRouteInfo<void> {
+  const NoteEditingRoute()
+      : super(
+          NoteEditingRoute.name,
+          path: 'editing',
+        );
+
+  static const String name = 'NoteEditingRoute';
+}
+
+/// generated route for
+/// [_i5.NotesPage]
+class NotesRoute extends _i9.PageRouteInfo<void> {
+  const NotesRoute()
       : super(
           NotesRoute.name,
           path: 'default',
-          args: NotesRouteArgs(key: key),
         );
 
   static const String name = 'NotesRoute';
 }
 
-class NotesRouteArgs {
-  const NotesRouteArgs({this.key});
-
-  final _i9.Key? key;
-
-  @override
-  String toString() {
-    return 'NotesRouteArgs{key: $key}';
-  }
-}
-
 /// generated route for
-/// [_i5.NewNotePage]
-class NewNoteRoute extends _i8.PageRouteInfo<void> {
+/// [_i6.NewNotePage]
+class NewNoteRoute extends _i9.PageRouteInfo<void> {
   const NewNoteRoute()
       : super(
           NewNoteRoute.name,
@@ -341,49 +352,25 @@ class NewNoteRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.ToDosPage]
-class ToDosRoute extends _i8.PageRouteInfo<ToDosRouteArgs> {
-  ToDosRoute({_i9.Key? key})
+/// [_i7.ToDosPage]
+class ToDosRoute extends _i9.PageRouteInfo<void> {
+  const ToDosRoute()
       : super(
           ToDosRoute.name,
           path: 'default',
-          args: ToDosRouteArgs(key: key),
         );
 
   static const String name = 'ToDosRoute';
 }
 
-class ToDosRouteArgs {
-  const ToDosRouteArgs({this.key});
-
-  final _i9.Key? key;
-
-  @override
-  String toString() {
-    return 'ToDosRouteArgs{key: $key}';
-  }
-}
-
 /// generated route for
-/// [_i7.GoalsPage]
-class GoalsRoute extends _i8.PageRouteInfo<GoalsRouteArgs> {
-  GoalsRoute({_i9.Key? key})
+/// [_i8.GoalsPage]
+class GoalsRoute extends _i9.PageRouteInfo<void> {
+  const GoalsRoute()
       : super(
           GoalsRoute.name,
           path: 'default',
-          args: GoalsRouteArgs(key: key),
         );
 
   static const String name = 'GoalsRoute';
-}
-
-class GoalsRouteArgs {
-  const GoalsRouteArgs({this.key});
-
-  final _i9.Key? key;
-
-  @override
-  String toString() {
-    return 'GoalsRouteArgs{key: $key}';
-  }
 }

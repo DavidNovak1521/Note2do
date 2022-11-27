@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:note2do/routes/app_routes.gr.dart';
 import 'package:note2do/style/my_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +12,10 @@ import '../widgets/items/note_item.dart';
 
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
+
+  void goToNoteEditing(BuildContext context) {
+    AutoRouter.of(context).push(NoteEditingRoute());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class NotesPage extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
                     value: favoriteNotes[index],
-                    child: NoteItem(),
+                    child: NoteItem(routeFunction: goToNoteEditing),
                   ),
                 ),
               ),
@@ -61,7 +67,7 @@ class NotesPage extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(vertical: 7.5),
                         child: ChangeNotifierProvider.value(
                           value: notes[index],
-                          child: NoteItem(),
+                          child: NoteItem(routeFunction: goToNoteEditing),
                         ),
                       ),
                     ),

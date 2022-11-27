@@ -6,7 +6,11 @@ import '../../style/my_colors.dart';
 import '../../providers/note.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  final Function routeFunction;
+  const NoteItem({
+    super.key,
+    required this.routeFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class NoteItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: ListTile(
-        onTap: () => print('${note.title} clicked.'),
+        onTap: () => routeFunction(context),
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         title: Text(
           note.title,

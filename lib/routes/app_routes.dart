@@ -4,6 +4,7 @@ import 'package:note2do/pages/goals_page.dart';
 import 'package:note2do/pages/home_page.dart';
 import 'package:note2do/pages/navigation_page.dart';
 import 'package:note2do/pages/new_note_page.dart';
+import 'package:note2do/pages/note_editing_page.dart';
 import 'package:note2do/pages/notes_page.dart';
 import 'package:note2do/pages/to_dos_page.dart';
 
@@ -27,6 +28,10 @@ export 'app_routes.gr.dart';
               page: HomePage,
               initial: true,
             ),
+            AutoRoute(
+              path: 'editing',
+              page: NoteEditingPage,
+            ),
           ],
         ),
         AutoRoute(
@@ -38,6 +43,10 @@ export 'app_routes.gr.dart';
               path: 'default',
               page: NotesPage,
               initial: true,
+            ),
+            AutoRoute(
+              path: 'editing',
+              page: NoteEditingPage,
             ),
           ],
         ),
