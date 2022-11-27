@@ -15,6 +15,7 @@ class NewNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         TextField(
           controller: titleCont,
@@ -33,6 +34,7 @@ class NewNote extends StatelessWidget {
         ),
         TextField(
           controller: textCont,
+          maxLines: 10,
           style: GoogleFonts.montserrat(
             color: MyColors.dark,
             fontSize: 16,

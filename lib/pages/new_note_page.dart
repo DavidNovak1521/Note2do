@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/to_do.dart';
 import '../providers/notes.dart';
 import '../providers/to_dos.dart';
 import '../providers/goals.dart';
@@ -15,7 +16,7 @@ import '../widgets/inputs/new_goal.dart';
 
 enum NoteType { note, todo, goal }
 
-Map<NoteType, String> typeName = {
+const Map<NoteType, String> typeName = {
   NoteType.note: 'Note',
   NoteType.todo: 'To do',
   NoteType.goal: 'Goal',
@@ -79,7 +80,7 @@ class _NewNotePageState extends State<NewNotePage> {
         case NoteType.todo:
           if (toDoController.text.isNotEmpty) {
             Provider.of<ToDos>(context, listen: false)
-                .addToDo(toDoController.text);
+                .addToDo(toDoController.text, ToDoType.day);
             toDoController.text = '';
           }
           break;

@@ -98,13 +98,13 @@ class ToDos with ChangeNotifier {
     notifyListeners();
   }
 
-  void addToDo(String toAdd) {
+  void addToDo(String toAdd, ToDoType type) {
     _toDos.insert(
       0,
       ToDo(
         id: DateTime.now().toString(),
         text: toAdd,
-        type: ToDoType.day,
+        type: type,
         isDone: false,
       ),
     );

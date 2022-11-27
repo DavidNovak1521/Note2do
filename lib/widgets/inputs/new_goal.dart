@@ -13,6 +13,7 @@ class NewGoal extends StatelessWidget {
     return Center(
       child: TextField(
         controller: textCont,
+        maxLines: 5,
         style: GoogleFonts.montserrat(
           color: MyColors.dark,
           fontSize: 16,
