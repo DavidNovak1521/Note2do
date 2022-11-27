@@ -38,7 +38,7 @@ class NewNote extends StatelessWidget {
           style: GoogleFonts.montserrat(
             color: MyColors.dark,
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w400,
           ),
           cursorColor: MyColors.dark,
           textAlign: TextAlign.start,

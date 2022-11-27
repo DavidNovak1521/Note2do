@@ -37,8 +37,8 @@ class NewNotePage extends StatefulWidget {
 
 class _NewNotePageState extends State<NewNotePage> {
   NoteType _selectedSegment = NoteType.note;
-  final noteTitlelController = TextEditingController();
-  final noteTextlController = TextEditingController();
+  final noteTitleController = TextEditingController();
+  final noteTextController = TextEditingController();
   final toDoController = TextEditingController();
   final goalController = TextEditingController();
 
@@ -46,8 +46,8 @@ class _NewNotePageState extends State<NewNotePage> {
     switch (type) {
       case NoteType.note:
         return NewNote(
-          titleCont: noteTitlelController,
-          textCont: noteTextlController,
+          titleCont: noteTitleController,
+          textCont: noteTextController,
         );
 
       case NoteType.todo:
@@ -66,14 +66,14 @@ class _NewNotePageState extends State<NewNotePage> {
     void addNewNote(NoteType type) {
       switch (type) {
         case NoteType.note:
-          if (noteTitlelController.text.isNotEmpty &&
-              noteTextlController.text.isNotEmpty) {
+          if (noteTitleController.text.isNotEmpty &&
+              noteTextController.text.isNotEmpty) {
             Provider.of<Notes>(context, listen: false).addNote(
-              noteTitlelController.text,
-              noteTextlController.text,
+              noteTitleController.text,
+              noteTextController.text,
             );
-            noteTitlelController.text = '';
-            noteTextlController.text = '';
+            noteTitleController.text = '';
+            noteTextController.text = '';
           }
           break;
 

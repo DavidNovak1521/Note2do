@@ -22,7 +22,7 @@ class NoteItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: ListTile(
-        onTap: () => routeFunction(context),
+        onTap: () => routeFunction(context, note),
         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         title: Text(
           note.title,

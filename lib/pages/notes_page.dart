@@ -5,6 +5,7 @@ import 'package:note2do/routes/app_routes.gr.dart';
 import 'package:note2do/style/my_colors.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/note.dart';
 import '../providers/notes.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
@@ -13,8 +14,8 @@ import '../widgets/items/note_item.dart';
 class NotesPage extends StatelessWidget {
   const NotesPage({super.key});
 
-  void goToNoteEditing(BuildContext context) {
-    AutoRouter.of(context).push(NoteEditingRoute());
+  void goToNoteEditing(BuildContext context, Note note) {
+    AutoRouter.of(context).push(NoteEditingRoute(note: note));
   }
 
   @override

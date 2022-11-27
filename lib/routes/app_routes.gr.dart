@@ -22,6 +22,7 @@ import '../pages/new_note_page.dart' as _i6;
 import '../pages/note_editing_page.dart' as _i4;
 import '../pages/notes_page.dart' as _i5;
 import '../pages/to_dos_page.dart' as _i7;
+import '../providers/note.dart' as _i11;
 
 class AppRouter extends _i9.RootStackRouter {
   AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
@@ -72,9 +73,13 @@ class AppRouter extends _i9.RootStackRouter {
       );
     },
     NoteEditingRoute.name: (routeData) {
+      final args = routeData.argsAs<NoteEditingRouteArgs>();
       return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.NoteEditingPage(),
+        child: _i4.NoteEditingPage(
+          key: args.key,
+          note: args.note,
+        ),
       );
     },
     NotesRoute.name: (routeData) {
@@ -317,14 +322,36 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.NoteEditingPage]
-class NoteEditingRoute extends _i9.PageRouteInfo<void> {
-  const NoteEditingRoute()
-      : super(
+class NoteEditingRoute extends _i9.PageRouteInfo<NoteEditingRouteArgs> {
+  NoteEditingRoute({
+    _i10.Key? key,
+    required _i11.Note note,
+  }) : super(
           NoteEditingRoute.name,
           path: 'editing',
+          args: NoteEditingRouteArgs(
+            key: key,
+            note: note,
+          ),
         );
 
   static const String name = 'NoteEditingRoute';
+}
+
+class NoteEditingRouteArgs {
+  const NoteEditingRouteArgs({
+    this.key,
+    required this.note,
+  });
+
+  final _i10.Key? key;
+
+  final _i11.Note note;
+
+  @override
+  String toString() {
+    return 'NoteEditingRouteArgs{key: $key, note: $note}';
+  }
 }
 
 /// generated route for
