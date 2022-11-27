@@ -5,7 +5,7 @@ import '../../providers/to_do.dart';
 class MyDropdownButton extends StatefulWidget {
   final List<DropdownMenuItem<dynamic>> itemsList;
   // ignore: prefer_typing_uninitialized_variables
-  var dropdownValue = ToDoType.day;
+  var dropdownValue = GlobalToDoType.type;
 
   MyDropdownButton({
     super.key,
@@ -20,6 +20,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
   void dropdownCallback(selectedValue) {
     setState(() {
       widget.dropdownValue = selectedValue;
+      GlobalToDoType.type = selectedValue;
     });
   }
 

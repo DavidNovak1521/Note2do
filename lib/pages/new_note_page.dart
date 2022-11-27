@@ -80,7 +80,7 @@ class _NewNotePageState extends State<NewNotePage> {
         case NoteType.todo:
           if (toDoController.text.isNotEmpty) {
             Provider.of<ToDos>(context, listen: false)
-                .addToDo(toDoController.text, ToDoType.day);
+                .addToDo(toDoController.text, GlobalToDoType.type);
             toDoController.text = '';
           }
           break;

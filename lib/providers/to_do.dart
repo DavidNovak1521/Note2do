@@ -5,6 +5,11 @@ import 'to_dos.dart';
 
 enum ToDoType { day, week, month }
 
+class GlobalToDoType {
+  // ignore: prefer_typing_uninitialized_variables
+  static var type = ToDoType.day;
+}
+
 class ToDo with ChangeNotifier {
   final String id;
   final String text;
