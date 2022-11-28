@@ -66,10 +66,11 @@ class _NewNotePageState extends State<NewNotePage> {
     void addNewNote(NoteType type) {
       switch (type) {
         case NoteType.note:
-          if (noteTitleController.text.isNotEmpty &&
-              noteTextController.text.isNotEmpty) {
+          if (noteTextController.text.isNotEmpty) {
             Provider.of<Notes>(context, listen: false).addNote(
-              noteTitleController.text,
+              noteTitleController.text.isNotEmpty
+                  ? noteTitleController.text
+                  : noteTextController.text.split(' ')[0],
               noteTextController.text,
             );
             noteTitleController.text = '';

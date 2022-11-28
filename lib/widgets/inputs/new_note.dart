@@ -15,7 +15,7 @@ class NewNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         TextField(
           controller: titleCont,
@@ -32,20 +32,22 @@ class NewNote extends StatelessWidget {
             hintText: 'Write a title ...',
           ),
         ),
-        TextField(
-          controller: textCont,
-          maxLines: 10,
-          style: GoogleFonts.montserrat(
-            color: MyColors.dark,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-          ),
-          cursorColor: MyColors.dark,
-          textAlign: TextAlign.start,
-          textCapitalization: TextCapitalization.sentences,
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            hintText: 'Write a new note ...',
+        Expanded(
+          child: TextField(
+            controller: textCont,
+            maxLines: 10,
+            style: GoogleFonts.montserrat(
+              color: MyColors.dark,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+            cursorColor: MyColors.dark,
+            textAlign: TextAlign.start,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              hintText: 'Write a new note ...',
+            ),
           ),
         ),
       ],
