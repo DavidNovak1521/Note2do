@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/basic_page_container.dart';
 import '../providers/note.dart';
+import '../providers/notes.dart';
 import '../style/my_colors.dart';
 
 final titleTextStyle = GoogleFonts.montserrat(
@@ -18,13 +21,14 @@ final textTextStyle = GoogleFonts.montserrat(
   fontWeight: FontWeight.w400,
 );
 
+// ignore: must_be_immutable
 class NoteEditingPage extends StatelessWidget {
-  const NoteEditingPage({
+  NoteEditingPage({
     super.key,
     required this.note,
   });
 
-  final Note note;
+  Note note;
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +109,18 @@ class NoteEditingPage extends StatelessWidget {
                     ),
                     onPressed: () {
                       FocusManager.instance.primaryFocus?.unfocus();
+
+                      final newNote = Note(
+                        id: note.id,
+                        title: titleController.text,
+                        text: textController.text,
+                        isFavorite: note.isFavorite,
+                      );
+
+                      Provider.of<Notes>(context, listen: false)
+                          .modifyNote(newNote);
+
+                      AutoRouter.of(context).popTop();
                     },
                     child: const Icon(
                       Icons.done_rounded,
