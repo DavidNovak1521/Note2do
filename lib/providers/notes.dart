@@ -106,4 +106,10 @@ class Notes with ChangeNotifier {
     _notes.removeWhere((note) => note.id == toRemove);
     notifyListeners();
   }
+
+  void modifyNote(Note newNote) {
+    _notes.removeWhere((note) => note.id == newNote.id);
+    _notes.insert(0, newNote);
+    notifyListeners();
+  }
 }
