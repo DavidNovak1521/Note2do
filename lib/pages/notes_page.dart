@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:note2do/routes/app_routes.gr.dart';
 import 'package:note2do/style/my_colors.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../providers/note.dart';
 import '../providers/notes.dart';
@@ -32,11 +33,28 @@ class NotesPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: favoriteNotes.length,
-              (context, index) => Dismissible(
+              (context, index) => Slidable(
                 key: ValueKey(favoriteNotes[index].id),
-                onDismissed: (direction) =>
-                    Provider.of<Notes>(context, listen: false)
-                        .removeNote(favoriteNotes[index].id),
+                startActionPane: ActionPane(
+                  extentRatio: 0.25,
+                  motion: const ScrollMotion(),
+                  dismissible: DismissiblePane(
+                    onDismissed: () =>
+                        Provider.of<Notes>(context, listen: false)
+                            .removeNote(favoriteNotes[index].id),
+                  ),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) =>
+                          Provider.of<Notes>(context, listen: false)
+                              .removeNote(favoriteNotes[index].id),
+                      foregroundColor: Colors.red,
+                      icon: Icons.delete,
+                      label: 'Delete',
+                      padding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
@@ -59,11 +77,28 @@ class NotesPage extends StatelessWidget {
               ? SliverList(
                   delegate: SliverChildBuilderDelegate(
                     childCount: notes.length,
-                    (context, index) => Dismissible(
+                    (context, index) => Slidable(
                       key: ValueKey(notes[index].id),
-                      onDismissed: (direction) =>
-                          Provider.of<Notes>(context, listen: false)
-                              .removeNote(notes[index].id),
+                      startActionPane: ActionPane(
+                        extentRatio: 0.25,
+                        motion: const ScrollMotion(),
+                        dismissible: DismissiblePane(
+                          onDismissed: () =>
+                              Provider.of<Notes>(context, listen: false)
+                                  .removeNote(notes[index].id),
+                        ),
+                        children: [
+                          SlidableAction(
+                            onPressed: (context) =>
+                                Provider.of<Notes>(context, listen: false)
+                                    .removeNote(notes[index].id),
+                            foregroundColor: Colors.red,
+                            icon: Icons.delete,
+                            label: 'Delete',
+                            padding: EdgeInsets.zero,
+                          ),
+                        ],
+                      ),
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 7.5),
                         child: ChangeNotifierProvider.value(
