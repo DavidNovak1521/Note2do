@@ -7,6 +7,7 @@ import './routes/app_routes.dart';
 import './providers/notes.dart';
 import './providers/to_dos.dart';
 import './providers/goals.dart';
+import './providers/deleted_notes.dart';
 
 void main() {
   GoogleFonts.config.allowRuntimeFetching = false;
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => Notes()),
         ChangeNotifierProvider(create: (context) => ToDos()),
         ChangeNotifierProvider(create: (context) => Goals()),
+        ChangeNotifierProvider(create: (context) => DeletedNotes()),
       ],
       child: MaterialApp.router(
         title: 'Note2do',

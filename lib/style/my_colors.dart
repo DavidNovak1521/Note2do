@@ -11,5 +11,5 @@ class MyColors {
   static Color get white => const Color(0xFFFFFFFF); // #FFFFFF
   static Color get grey1 => const Color(0xFFEEEEEE); // #EEEEEE
   static Color get grey2 => const Color(0xFFCCCCCC); // #CCCCCC
-  static Color get grey3 => const Color(0xFF555555); // #555555
+  static Color get grey3 => const Color(0xFF888888); // #888888
 }

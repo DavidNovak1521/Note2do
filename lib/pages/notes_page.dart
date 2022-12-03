@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:note2do/routes/app_routes.gr.dart';
-import 'package:note2do/style/my_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../routes/app_routes.gr.dart';
+import '../style/my_colors.dart';
 import '../providers/note.dart';
 import '../providers/notes.dart';
+import '../providers/deleted_notes.dart';
 import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
@@ -23,6 +24,7 @@ class NotesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoriteNotes = Provider.of<Notes>(context).favoriteNotes;
     final notes = Provider.of<Notes>(context).notes;
+    final deletedNotes = Provider.of<DeletedNotes>(context, listen: false);
 
     return BasicPageContainer(
       child: CustomScrollView(
@@ -39,15 +41,19 @@ class NotesPage extends StatelessWidget {
                   extentRatio: 0.25,
                   motion: const ScrollMotion(),
                   dismissible: DismissiblePane(
-                    onDismissed: () =>
-                        Provider.of<Notes>(context, listen: false)
-                            .removeNote(favoriteNotes[index].id),
+                    onDismissed: () {
+                      deletedNotes.addNote(favoriteNotes[index]);
+                      Provider.of<Notes>(context, listen: false)
+                          .removeNote(favoriteNotes[index].id);
+                    },
                   ),
                   children: [
                     SlidableAction(
-                      onPressed: (context) =>
-                          Provider.of<Notes>(context, listen: false)
-                              .removeNote(favoriteNotes[index].id),
+                      onPressed: (context) {
+                        deletedNotes.addNote(favoriteNotes[index]);
+                        Provider.of<Notes>(context, listen: false)
+                            .removeNote(favoriteNotes[index].id);
+                      },
                       foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
@@ -83,15 +89,19 @@ class NotesPage extends StatelessWidget {
                         extentRatio: 0.25,
                         motion: const ScrollMotion(),
                         dismissible: DismissiblePane(
-                          onDismissed: () =>
-                              Provider.of<Notes>(context, listen: false)
-                                  .removeNote(notes[index].id),
+                          onDismissed: () {
+                            deletedNotes.addNote(notes[index]);
+                            Provider.of<Notes>(context, listen: false)
+                                .removeNote(notes[index].id);
+                          },
                         ),
                         children: [
                           SlidableAction(
-                            onPressed: (context) =>
-                                Provider.of<Notes>(context, listen: false)
-                                    .removeNote(notes[index].id),
+                            onPressed: (context) {
+                              deletedNotes.addNote(notes[index]);
+                              Provider.of<Notes>(context, listen: false)
+                                  .removeNote(notes[index].id);
+                            },
                             foregroundColor: MyColors.deleteRed,
                             icon: Icons.delete_rounded,
                             label: 'Delete',

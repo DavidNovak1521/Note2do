@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/deleted_notes.dart';
 import '../style/my_colors.dart';
 import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
@@ -19,6 +19,7 @@ class ToDosPage extends StatelessWidget {
     final toDosDay = Provider.of<ToDos>(context).toDosDay;
     final toDosWeek = Provider.of<ToDos>(context).toDosWeek;
     final toDosMonth = Provider.of<ToDos>(context).toDosMonth;
+    final deletedNotes = Provider.of<DeletedNotes>(context, listen: false);
     final int numberOfDoneDay = toDosDay.where((todo) => todo.isDone).length;
     final int numberOfDoneWeek = toDosWeek.where((todo) => todo.isDone).length;
     final int numberOfDoneMonth =
@@ -104,15 +105,19 @@ class ToDosPage extends StatelessWidget {
                   extentRatio: 0.25,
                   motion: const ScrollMotion(),
                   dismissible: DismissiblePane(
-                    onDismissed: () =>
-                        Provider.of<ToDos>(context, listen: false)
-                            .removeToDo(toDosDay[index].id),
+                    onDismissed: () {
+                      deletedNotes.addNote(toDosDay[index]);
+                      Provider.of<ToDos>(context, listen: false)
+                          .removeToDo(toDosDay[index].id);
+                    },
                   ),
                   children: [
                     SlidableAction(
-                      onPressed: (context) =>
-                          Provider.of<ToDos>(context, listen: false)
-                              .removeToDo(toDosDay[index].id),
+                      onPressed: (context) {
+                        deletedNotes.addNote(toDosDay[index]);
+                        Provider.of<ToDos>(context, listen: false)
+                            .removeToDo(toDosDay[index].id);
+                      },
                       foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
@@ -158,15 +163,19 @@ class ToDosPage extends StatelessWidget {
                   extentRatio: 0.25,
                   motion: const ScrollMotion(),
                   dismissible: DismissiblePane(
-                    onDismissed: () =>
-                        Provider.of<ToDos>(context, listen: false)
-                            .removeToDo(toDosWeek[index].id),
+                    onDismissed: () {
+                      deletedNotes.addNote(toDosWeek[index]);
+                      Provider.of<ToDos>(context, listen: false)
+                          .removeToDo(toDosWeek[index].id);
+                    },
                   ),
                   children: [
                     SlidableAction(
-                      onPressed: (context) =>
-                          Provider.of<ToDos>(context, listen: false)
-                              .removeToDo(toDosWeek[index].id),
+                      onPressed: (context) {
+                        deletedNotes.addNote(toDosWeek[index]);
+                        Provider.of<ToDos>(context, listen: false)
+                            .removeToDo(toDosWeek[index].id);
+                      },
                       foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
@@ -212,15 +221,19 @@ class ToDosPage extends StatelessWidget {
                   extentRatio: 0.25,
                   motion: const ScrollMotion(),
                   dismissible: DismissiblePane(
-                    onDismissed: () =>
-                        Provider.of<ToDos>(context, listen: false)
-                            .removeToDo(toDosMonth[index].id),
+                    onDismissed: () {
+                      deletedNotes.addNote(toDosMonth[index]);
+                      Provider.of<ToDos>(context, listen: false)
+                          .removeToDo(toDosMonth[index].id);
+                    },
                   ),
                   children: [
                     SlidableAction(
-                      onPressed: (context) =>
-                          Provider.of<ToDos>(context, listen: false)
-                              .removeToDo(toDosMonth[index].id),
+                      onPressed: (context) {
+                        deletedNotes.addNote(toDosMonth[index]);
+                        Provider.of<ToDos>(context, listen: false)
+                            .removeToDo(toDosMonth[index].id);
+                      },
                       foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',

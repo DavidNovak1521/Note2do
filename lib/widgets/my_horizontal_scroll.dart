@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note2do/style/my_colors.dart';
 
 import '../style/my_texts.dart';
 
@@ -6,12 +7,14 @@ class MyHorizontalScroll extends StatelessWidget {
   final int count;
   final Color color;
   final List<String> labels;
+  final IconData icon;
 
   const MyHorizontalScroll({
     super.key,
     required this.count,
     required this.color,
     required this.labels,
+    required this.icon,
   });
 
   @override
@@ -30,11 +33,22 @@ class MyHorizontalScroll extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(
-            labels[index],
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: horizontalScrollTextStyle,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                labels[index],
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: horizontalScrollTextStyle,
+              ),
+              Icon(
+                icon,
+                size: 24,
+                color: MyColors.white,
+              ),
+            ],
           ),
         ),
       ),

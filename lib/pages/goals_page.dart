@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/deleted_notes.dart';
 import '../style/my_colors.dart';
 import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
@@ -16,6 +17,7 @@ class GoalsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final goals = Provider.of<Goals>(context).goals;
+    final deletedNotes = Provider.of<DeletedNotes>(context, listen: false);
     final int numberOfDone = goals.where((goal) => goal.isDone).length;
 
     return BasicPageContainer(
@@ -59,15 +61,19 @@ class GoalsPage extends StatelessWidget {
                   extentRatio: 0.25,
                   motion: const ScrollMotion(),
                   dismissible: DismissiblePane(
-                    onDismissed: () =>
-                        Provider.of<Goals>(context, listen: false)
-                            .removeGoal(goals[index].id),
+                    onDismissed: () {
+                      deletedNotes.addNote(goals[index]);
+                      Provider.of<Goals>(context, listen: false)
+                          .removeGoal(goals[index].id);
+                    },
                   ),
                   children: [
                     SlidableAction(
-                      onPressed: (context) =>
-                          Provider.of<Goals>(context, listen: false)
-                              .removeGoal(goals[index].id),
+                      onPressed: (context) {
+                        deletedNotes.addNote(goals[index]);
+                        Provider.of<Goals>(context, listen: false)
+                            .removeGoal(goals[index].id);
+                      },
                       foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',

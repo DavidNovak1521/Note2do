@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../style/my_colors.dart';
+import '../style/my_texts.dart';
 import '../widgets/my_title_text.dart';
 import '../providers/notes.dart';
 import '../providers/to_dos.dart';
 import '../providers/goals.dart';
+import '../providers/deleted_notes.dart';
+import '../providers/note.dart';
+import '../providers/to_do.dart';
+import '../providers/goal.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_horizontal_scroll.dart';
 
@@ -19,6 +24,7 @@ class HomePage extends StatelessWidget {
     final notes = Provider.of<Notes>(context).notesTop5;
     final toDos = Provider.of<ToDos>(context).toDosTop5;
     final goals = Provider.of<Goals>(context).goalsTop5;
+    final deletedNotes = Provider.of<DeletedNotes>(context).deletedNotes;
 
     return BasicPageContainer(
       needsPadding: false,
@@ -41,6 +47,7 @@ class HomePage extends StatelessWidget {
               count: notes.length,
               color: MyColors.primaryBlue,
               labels: [...notes.map((note) => note.getTitle()).toList()],
+              icon: Icons.note_rounded,
             ),
             const Padding(
               padding: originalPadding,
@@ -53,6 +60,7 @@ class HomePage extends StatelessWidget {
               count: toDos.length,
               color: MyColors.secondaryBlue,
               labels: [...toDos.map((todo) => todo.getText()).toList()],
+              icon: Icons.work_rounded,
             ),
             const Padding(
               padding: originalPadding,
@@ -65,9 +73,41 @@ class HomePage extends StatelessWidget {
               count: goals.length,
               color: MyColors.tertiaryBlue,
               labels: [...goals.map((goal) => goal.getText()).toList()],
+              icon: Icons.push_pin_rounded,
             ),
+            const Padding(
+              padding: originalPadding,
+              child: MyTitleText(
+                text: 'Recently deleted',
+                smaller: true,
+              ),
+            ),
+            (deletedNotes.isEmpty)
+                ? Padding(
+                    padding: originalPadding,
+                    child: Text(
+                      'No deleted notes.',
+                      style: missingMessageTextStyle,
+                    ),
+                  )
+                : MyHorizontalScroll(
+                    count: deletedNotes.length,
+                    color: MyColors.grey3,
+                    labels: [
+                      ...deletedNotes.map(
+                        (note) {
+                          if (note is Note) {
+                            return note.title;
+                          } else {
+                            return note.text;
+                          }
+                        },
+                      ),
+                    ],
+                    icon: Icons.delete_rounded,
+                  ),
             const Divider(
-              height: 30,
+              height: 35,
               color: Colors.transparent,
             ),
           ],
