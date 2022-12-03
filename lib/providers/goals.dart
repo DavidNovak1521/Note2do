@@ -9,52 +9,62 @@ class Goals with ChangeNotifier {
       id: 'g1',
       text: 'Első cél',
       isDone: true,
+      date: DateTime.now(),
     ),
     Goal(
       id: 'g2',
       text: 'Második, de már hosszabb cél',
       isDone: false,
+      date: DateTime.now().add(const Duration(days: 1)),
     ),
     Goal(
       id: 'g3',
       text: 'Harmadik, de még az előzőnél is hosszabb cél tesztelni',
       isDone: false,
+      date: DateTime.now().add(const Duration(days: 5)),
     ),
     Goal(
       id: 'g4',
       text:
           'Ez pedig a leghosszabb cél. Ez pedig a leghosszabb cél. Ez pedig a leghosszabb cél. Ez pedig a leghosszabb cél. Ez pedig a leghosszabb cél. Ez pedig a leghosszabb cél.',
       isDone: true,
+      date: DateTime.now().add(const Duration(days: 10)),
     ),
     Goal(
       id: 'g5',
       text: 'Valami cél 5',
       isDone: true,
+      date: DateTime.now().add(const Duration(days: 14)),
     ),
     Goal(
       id: 'g6',
       text: 'Valami cél 6',
       isDone: false,
+      date: DateTime.now().add(const Duration(days: 30)),
     ),
     Goal(
       id: 'g7',
       text: 'Valami cél 7',
       isDone: false,
+      date: DateTime.now().add(const Duration(days: 31)),
     ),
     Goal(
       id: 'g8',
       text: 'Valami cél 8',
       isDone: false,
+      date: DateTime.now().add(const Duration(days: 40)),
     ),
     Goal(
       id: 'g9',
       text: 'Valami cél 9',
       isDone: true,
+      date: DateTime.now().add(const Duration(days: 45)),
     ),
     Goal(
       id: 'g10',
       text: 'Valami cél 10',
       isDone: false,
+      date: DateTime.now().add(const Duration(days: 365)),
     ),
   ];
 
@@ -82,11 +92,15 @@ class Goals with ChangeNotifier {
   }
 
   void addGoalByString(String toAdd) {
+    final index = _goals.indexWhere((goal) =>
+        GlobalGoalDate.date.compareTo(goal.date) == 0 ||
+        GlobalGoalDate.date.compareTo(goal.date) < 0);
     _goals.insert(
-      0,
+      index,
       Goal(
         id: DateTime.now().toString(),
         text: toAdd,
+        date: GlobalGoalDate.date,
         isDone: false,
       ),
     );

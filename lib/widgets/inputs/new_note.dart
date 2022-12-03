@@ -6,6 +6,7 @@ import '../../style/my_texts.dart';
 class NewNote extends StatelessWidget {
   final TextEditingController titleCont;
   final TextEditingController textCont;
+
   const NewNote({
     super.key,
     required this.titleCont,

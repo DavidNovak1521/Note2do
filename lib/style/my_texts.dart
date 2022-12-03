@@ -70,6 +70,8 @@ final newNoteTextStyle = darkTextStyle;
 
 final dropdownTextStyle = darkTextStyle;
 
+final datetimeTextStyle = darkTextStyle;
+
 final segmentTextStyle = darkSemiBoldTextStyle;
 
 final noteEditingTitleTextStyle = darkSemiBoldTextStyle;

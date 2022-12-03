@@ -32,7 +32,6 @@ final List<DropdownMenuItem<dynamic>> dropdownItems = [
 // ignore: must_be_immutable
 class NewToDo extends StatelessWidget {
   final TextEditingController textCont;
-  // ignore: prefer_typing_uninitialized_variables
 
   NewToDo({super.key, required this.textCont});
 

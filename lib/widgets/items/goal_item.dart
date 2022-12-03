@@ -35,7 +35,20 @@ class GoalItem extends StatelessWidget {
               : Icons.check_box_outline_blank_rounded,
           color: MyColors.white,
         ),
-        // trailing: ,
+        trailing: Text(
+          (goal.date
+                      .difference(DateTime(DateTime.now().year,
+                          DateTime.now().month, DateTime.now().day))
+                      .inDays <
+                  1)
+              ? '0'
+              : (goal.date
+                      .difference(DateTime(DateTime.now().year,
+                          DateTime.now().month, DateTime.now().day))
+                      .inDays)
+                  .toString(),
+          style: whiteSemiBoldTextStyle,
+        ),
       ),
     );
   }
