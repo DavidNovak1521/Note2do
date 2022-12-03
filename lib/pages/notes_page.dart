@@ -49,7 +49,7 @@ class NotesPage extends StatelessWidget {
                           Provider.of<Notes>(context, listen: false)
                               .removeNote(favoriteNotes[index].id),
                       foregroundColor: Colors.red,
-                      icon: Icons.delete,
+                      icon: Icons.delete_rounded,
                       label: 'Delete',
                       padding: EdgeInsets.zero,
                     ),
@@ -93,7 +93,7 @@ class NotesPage extends StatelessWidget {
                                 Provider.of<Notes>(context, listen: false)
                                     .removeNote(notes[index].id),
                             foregroundColor: Colors.red,
-                            icon: Icons.delete,
+                            icon: Icons.delete_rounded,
                             label: 'Delete',
                             padding: EdgeInsets.zero,
                           ),

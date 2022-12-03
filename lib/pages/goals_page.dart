@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -56,13 +57,30 @@ class GoalsPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: goals.length,
-              (context, index) => Dismissible(
+              (context, index) => Slidable(
                 key: ValueKey(goals[index].id),
-                onDismissed: (direction) =>
-                    Provider.of<Goals>(context, listen: false)
-                        .removeGoal(goals[index].id),
+                startActionPane: ActionPane(
+                  extentRatio: 0.25,
+                  motion: const ScrollMotion(),
+                  dismissible: DismissiblePane(
+                    onDismissed: () =>
+                        Provider.of<Goals>(context, listen: false)
+                            .removeGoal(goals[index].id),
+                  ),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) =>
+                          Provider.of<Goals>(context, listen: false)
+                              .removeGoal(goals[index].id),
+                      foregroundColor: Colors.red,
+                      icon: Icons.delete_rounded,
+                      label: 'Delete',
+                      padding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 15),
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
                     value: goals[index],
                     child: const GoalItem(),

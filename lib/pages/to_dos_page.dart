@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -104,13 +105,30 @@ class ToDosPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: toDosDay.length,
-              (context, index) => Dismissible(
+              (context, index) => Slidable(
                 key: ValueKey(toDosDay[index].id),
-                onDismissed: (direction) =>
-                    Provider.of<ToDos>(context, listen: false)
-                        .removeToDo(toDosDay[index].id),
+                startActionPane: ActionPane(
+                  extentRatio: 0.25,
+                  motion: const ScrollMotion(),
+                  dismissible: DismissiblePane(
+                    onDismissed: () =>
+                        Provider.of<ToDos>(context, listen: false)
+                            .removeToDo(toDosDay[index].id),
+                  ),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) =>
+                          Provider.of<ToDos>(context, listen: false)
+                              .removeToDo(toDosDay[index].id),
+                      foregroundColor: Colors.red,
+                      icon: Icons.delete_rounded,
+                      label: 'Delete',
+                      padding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 15),
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
                     value: toDosDay[index],
                     child: const ToDoItem(),
@@ -145,13 +163,30 @@ class ToDosPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: toDosWeek.length,
-              (context, index) => Dismissible(
+              (context, index) => Slidable(
                 key: ValueKey(toDosWeek[index].id),
-                onDismissed: (direction) =>
-                    Provider.of<ToDos>(context, listen: false)
-                        .removeToDo(toDosWeek[index].id),
+                startActionPane: ActionPane(
+                  extentRatio: 0.25,
+                  motion: const ScrollMotion(),
+                  dismissible: DismissiblePane(
+                    onDismissed: () =>
+                        Provider.of<ToDos>(context, listen: false)
+                            .removeToDo(toDosWeek[index].id),
+                  ),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) =>
+                          Provider.of<ToDos>(context, listen: false)
+                              .removeToDo(toDosWeek[index].id),
+                      foregroundColor: Colors.red,
+                      icon: Icons.delete_rounded,
+                      label: 'Delete',
+                      padding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 15),
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
                     value: toDosWeek[index],
                     child: const ToDoItem(),
@@ -186,13 +221,30 @@ class ToDosPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: toDosMonth.length,
-              (context, index) => Dismissible(
+              (context, index) => Slidable(
                 key: ValueKey(toDosMonth[index].id),
-                onDismissed: (direction) =>
-                    Provider.of<ToDos>(context, listen: false)
-                        .removeToDo(toDosMonth[index].id),
+                startActionPane: ActionPane(
+                  extentRatio: 0.25,
+                  motion: const ScrollMotion(),
+                  dismissible: DismissiblePane(
+                    onDismissed: () =>
+                        Provider.of<ToDos>(context, listen: false)
+                            .removeToDo(toDosMonth[index].id),
+                  ),
+                  children: [
+                    SlidableAction(
+                      onPressed: (context) =>
+                          Provider.of<ToDos>(context, listen: false)
+                              .removeToDo(toDosMonth[index].id),
+                      foregroundColor: Colors.red,
+                      icon: Icons.delete_rounded,
+                      label: 'Delete',
+                      padding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 15),
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
                   child: ChangeNotifierProvider.value(
                     value: toDosMonth[index],
                     child: const ToDoItem(),
