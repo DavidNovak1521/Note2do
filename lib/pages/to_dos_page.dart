@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../style/my_colors.dart';
+import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
 import '../widgets/items/to_do_item.dart';
@@ -67,11 +68,7 @@ class ToDosPage extends StatelessWidget {
                           : Text(
                               'No to do\'s!\nCreate one.',
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(
-                                color: MyColors.dark,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: missingMessageTextStyle,
                             ),
                     ),
                   ),
@@ -86,11 +83,7 @@ class ToDosPage extends StatelessWidget {
                     children: [
                       Text(
                         'Today',
-                        style: GoogleFonts.montserrat(
-                          color: MyColors.dark,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        style: toDoTypeTextStyle,
                       ),
                       Expanded(
                         child: Divider(
@@ -120,7 +113,7 @@ class ToDosPage extends StatelessWidget {
                       onPressed: (context) =>
                           Provider.of<ToDos>(context, listen: false)
                               .removeToDo(toDosDay[index].id),
-                      foregroundColor: Colors.red,
+                      foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
                       padding: EdgeInsets.zero,
@@ -144,11 +137,7 @@ class ToDosPage extends StatelessWidget {
                     children: [
                       Text(
                         'This week',
-                        style: GoogleFonts.montserrat(
-                          color: MyColors.dark,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        style: toDoTypeTextStyle,
                       ),
                       Expanded(
                         child: Divider(
@@ -178,7 +167,7 @@ class ToDosPage extends StatelessWidget {
                       onPressed: (context) =>
                           Provider.of<ToDos>(context, listen: false)
                               .removeToDo(toDosWeek[index].id),
-                      foregroundColor: Colors.red,
+                      foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
                       padding: EdgeInsets.zero,
@@ -202,11 +191,7 @@ class ToDosPage extends StatelessWidget {
                     children: [
                       Text(
                         'This month',
-                        style: GoogleFonts.montserrat(
-                          color: MyColors.dark,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        style: toDoTypeTextStyle,
                       ),
                       Expanded(
                         child: Divider(
@@ -236,7 +221,7 @@ class ToDosPage extends StatelessWidget {
                       onPressed: (context) =>
                           Provider.of<ToDos>(context, listen: false)
                               .removeToDo(toDosMonth[index].id),
-                      foregroundColor: Colors.red,
+                      foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
                       padding: EdgeInsets.zero,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../style/my_colors.dart';
+import '../style/my_texts.dart';
 
 class MyHorizontalScroll extends StatelessWidget {
   final int count;
@@ -35,11 +34,7 @@ class MyHorizontalScroll extends StatelessWidget {
             labels[index],
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: GoogleFonts.montserrat(
-              color: MyColors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
+            style: horizontalScrollTextStyle,
           ),
         ),
       ),

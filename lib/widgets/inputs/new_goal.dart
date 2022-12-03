@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../style/my_colors.dart';
+import '../../style/my_texts.dart';
 
 class NewGoal extends StatelessWidget {
   final TextEditingController textCont;
@@ -14,11 +14,7 @@ class NewGoal extends StatelessWidget {
       child: TextField(
         controller: textCont,
         maxLines: 5,
-        style: GoogleFonts.montserrat(
-          color: MyColors.dark,
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        style: newNoteSemiBoldTextStyle,
         cursorColor: MyColors.dark,
         textAlign: TextAlign.center,
         textCapitalization: TextCapitalization.sentences,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../style/my_colors.dart';
+import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
 import '../widgets/items/goal_item.dart';
@@ -42,11 +42,7 @@ class GoalsPage extends StatelessWidget {
                           : Text(
                               'No goals!\nCreate one.',
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.montserrat(
-                                color: MyColors.dark,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: missingMessageTextStyle,
                             ),
                     ),
                   ),
@@ -72,7 +68,7 @@ class GoalsPage extends StatelessWidget {
                       onPressed: (context) =>
                           Provider.of<Goals>(context, listen: false)
                               .removeGoal(goals[index].id),
-                      foregroundColor: Colors.red,
+                      foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
                       padding: EdgeInsets.zero,

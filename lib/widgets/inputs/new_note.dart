@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../style/my_colors.dart';
+import '../../style/my_texts.dart';
 
 class NewNote extends StatelessWidget {
   final TextEditingController titleCont;
@@ -19,11 +19,7 @@ class NewNote extends StatelessWidget {
       children: [
         TextField(
           controller: titleCont,
-          style: GoogleFonts.montserrat(
-            color: MyColors.dark,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          style: newNoteSemiBoldTextStyle,
           cursorColor: MyColors.dark,
           textAlign: TextAlign.center,
           textCapitalization: TextCapitalization.sentences,
@@ -36,11 +32,7 @@ class NewNote extends StatelessWidget {
           child: TextField(
             controller: textCont,
             maxLines: 10,
-            style: GoogleFonts.montserrat(
-              color: MyColors.dark,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
+            style: newNoteTextStyle,
             cursorColor: MyColors.dark,
             textAlign: TextAlign.start,
             textCapitalization: TextCapitalization.sentences,

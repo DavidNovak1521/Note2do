@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/to_do.dart';
@@ -8,6 +7,7 @@ import '../providers/notes.dart';
 import '../providers/to_dos.dart';
 import '../providers/goals.dart';
 import '../style/my_colors.dart';
+import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
 import '../widgets/inputs/new_note.dart';
@@ -21,12 +21,6 @@ const Map<NoteType, String> typeName = {
   NoteType.todo: 'To do',
   NoteType.goal: 'Goal',
 };
-
-final segmentTextStyle = GoogleFonts.montserrat(
-  color: MyColors.dark,
-  fontSize: 16,
-  fontWeight: FontWeight.w600,
-);
 
 class NewNotePage extends StatefulWidget {
   const NewNotePage({super.key});

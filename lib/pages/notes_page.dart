@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:note2do/routes/app_routes.gr.dart';
 import 'package:note2do/style/my_colors.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../providers/note.dart';
 import '../providers/notes.dart';
+import '../style/my_texts.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_title_text.dart';
 import '../widgets/items/note_item.dart';
@@ -48,7 +48,7 @@ class NotesPage extends StatelessWidget {
                       onPressed: (context) =>
                           Provider.of<Notes>(context, listen: false)
                               .removeNote(favoriteNotes[index].id),
-                      foregroundColor: Colors.red,
+                      foregroundColor: MyColors.deleteRed,
                       icon: Icons.delete_rounded,
                       label: 'Delete',
                       padding: EdgeInsets.zero,
@@ -92,7 +92,7 @@ class NotesPage extends StatelessWidget {
                             onPressed: (context) =>
                                 Provider.of<Notes>(context, listen: false)
                                     .removeNote(notes[index].id),
-                            foregroundColor: Colors.red,
+                            foregroundColor: MyColors.deleteRed,
                             icon: Icons.delete_rounded,
                             label: 'Delete',
                             padding: EdgeInsets.zero,
@@ -116,11 +116,7 @@ class NotesPage extends StatelessWidget {
                     child: Text(
                       'No notes! Create one.',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.montserrat(
-                        color: MyColors.dark,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style: missingMessageTextStyle,
                     ),
                   ),
                 ),

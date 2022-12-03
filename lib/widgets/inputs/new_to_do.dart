@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../providers/to_do.dart';
 import '../../style/my_colors.dart';
+import '../../style/my_texts.dart';
 import '../my_dropdown_button.dart';
 
 final List<DropdownMenuItem<dynamic>> dropdownItems = [
@@ -29,12 +29,6 @@ final List<DropdownMenuItem<dynamic>> dropdownItems = [
   ),
 ];
 
-final dropdownTextStyle = GoogleFonts.montserrat(
-  color: MyColors.dark,
-  fontSize: 16,
-  fontWeight: FontWeight.w400,
-);
-
 // ignore: must_be_immutable
 class NewToDo extends StatelessWidget {
   final TextEditingController textCont;
@@ -51,11 +45,7 @@ class NewToDo extends StatelessWidget {
           TextField(
             controller: textCont,
             maxLines: 5,
-            style: GoogleFonts.montserrat(
-              color: MyColors.dark,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
+            style: newNoteSemiBoldTextStyle,
             cursorColor: MyColors.dark,
             textAlign: TextAlign.center,
             textCapitalization: TextCapitalization.sentences,

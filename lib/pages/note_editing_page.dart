@@ -1,25 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../widgets/basic_page_container.dart';
 import '../providers/note.dart';
 import '../providers/notes.dart';
 import '../style/my_colors.dart';
-
-final titleTextStyle = GoogleFonts.montserrat(
-  color: MyColors.dark,
-  fontSize: 16,
-  fontWeight: FontWeight.w600,
-);
-
-final textTextStyle = GoogleFonts.montserrat(
-  color: MyColors.dark,
-  fontSize: 16,
-  fontWeight: FontWeight.w400,
-);
+import '../style/my_texts.dart';
 
 // ignore: must_be_immutable
 class NoteEditingPage extends StatelessWidget {
@@ -47,7 +35,7 @@ class NoteEditingPage extends StatelessWidget {
                 children: [
                   TextField(
                     controller: titleController,
-                    style: titleTextStyle,
+                    style: noteEditingTitleTextStyle,
                     cursorColor: MyColors.dark,
                     textAlign: TextAlign.center,
                     textCapitalization: TextCapitalization.sentences,
@@ -59,7 +47,7 @@ class NoteEditingPage extends StatelessWidget {
                   TextField(
                     controller: textController,
                     maxLines: null,
-                    style: textTextStyle,
+                    style: noteEditingTextTextStyle,
                     cursorColor: MyColors.dark,
                     textAlign: TextAlign.start,
                     textCapitalization: TextCapitalization.sentences,

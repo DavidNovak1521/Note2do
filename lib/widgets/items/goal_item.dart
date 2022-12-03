@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../style/my_colors.dart';
 import '../../providers/goal.dart';
+import '../../style/my_texts.dart';
 
 class GoalItem extends StatelessWidget {
   const GoalItem({super.key});
@@ -27,11 +27,7 @@ class GoalItem extends StatelessWidget {
           goal.text,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: GoogleFonts.montserrat(
-            fontSize: 16,
-            fontWeight: goal.isDone ? FontWeight.w600 : FontWeight.w400,
-            color: MyColors.white,
-          ),
+          style: goal.isDone ? goalItemDoneTextStyle : goalItemTextStyle,
         ),
         leading: Icon(
           goal.isDone

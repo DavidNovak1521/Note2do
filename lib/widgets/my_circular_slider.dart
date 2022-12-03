@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import '../style/my_colors.dart';
+import '../style/my_texts.dart';
 
 class MyCircularSlider extends StatefulWidget {
   final double maxValue;
@@ -53,11 +53,7 @@ class _MyCircularSliderState extends State<MyCircularSlider> {
           alignment: Alignment.center,
           child: Text(
             '${widget.initValue.toInt()} / ${widget.maxValue.toInt()}',
-            style: GoogleFonts.montserrat(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: MyColors.dark,
-            ),
+            style: circularSliderTextStyle,
           ),
         );
       }),

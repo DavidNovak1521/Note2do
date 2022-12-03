@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../style/my_colors.dart';
 import '../../providers/to_do.dart';
+import '../../style/my_texts.dart';
 
 class ToDoItem extends StatelessWidget {
   const ToDoItem({super.key});
@@ -27,13 +27,7 @@ class ToDoItem extends StatelessWidget {
           toDo.text,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: GoogleFonts.montserrat(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color:
-                toDo.isDone ? MyColors.white.withOpacity(0.5) : MyColors.white,
-            decoration: toDo.isDone ? TextDecoration.lineThrough : null,
-          ),
+          style: toDo.isDone ? toDoItemDoneTextStyle : toDoItemTextStyle,
         ),
         leading: Icon(
           toDo.isDone
