@@ -76,7 +76,12 @@ class Goals with ChangeNotifier {
     notifyListeners();
   }
 
-  void addGoal(String toAdd) {
+  void addGoal(Goal toAdd) {
+    _goals.insert(0, toAdd);
+    notifyListeners();
+  }
+
+  void addGoalByString(String toAdd) {
     _goals.insert(
       0,
       Goal(

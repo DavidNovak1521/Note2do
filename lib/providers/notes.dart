@@ -89,7 +89,12 @@ class Notes with ChangeNotifier {
     notifyListeners();
   }
 
-  void addNote(String titleToAdd, String textToAdd) {
+  void addNote(Note toAdd) {
+    _notes.insert(0, toAdd);
+    notifyListeners();
+  }
+
+  void addNoteByString(String titleToAdd, String textToAdd) {
     _notes.insert(
       0,
       Note(

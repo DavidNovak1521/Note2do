@@ -61,7 +61,7 @@ class _NewNotePageState extends State<NewNotePage> {
       switch (type) {
         case NoteType.note:
           if (noteTextController.text.isNotEmpty) {
-            Provider.of<Notes>(context, listen: false).addNote(
+            Provider.of<Notes>(context, listen: false).addNoteByString(
               noteTitleController.text.isNotEmpty
                   ? noteTitleController.text
                   : noteTextController.text.split(' ')[0],
@@ -75,7 +75,7 @@ class _NewNotePageState extends State<NewNotePage> {
         case NoteType.todo:
           if (toDoController.text.isNotEmpty) {
             Provider.of<ToDos>(context, listen: false)
-                .addToDo(toDoController.text, GlobalToDoType.type);
+                .addToDoByString(toDoController.text, GlobalToDoType.type);
             toDoController.text = '';
           }
           break;
@@ -83,7 +83,7 @@ class _NewNotePageState extends State<NewNotePage> {
         case NoteType.goal:
           if (goalController.text.isNotEmpty) {
             Provider.of<Goals>(context, listen: false)
-                .addGoal(goalController.text);
+                .addGoalByString(goalController.text);
             goalController.text = '';
           }
           break;

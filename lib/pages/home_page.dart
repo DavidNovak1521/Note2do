@@ -9,8 +9,6 @@ import '../providers/to_dos.dart';
 import '../providers/goals.dart';
 import '../providers/deleted_notes.dart';
 import '../providers/note.dart';
-import '../providers/to_do.dart';
-import '../providers/goal.dart';
 import '../widgets/basic_page_container.dart';
 import '../widgets/my_horizontal_scroll.dart';
 
@@ -46,7 +44,8 @@ class HomePage extends StatelessWidget {
             MyHorizontalScroll(
               count: notes.length,
               color: MyColors.primaryBlue,
-              labels: [...notes.map((note) => note.getTitle()).toList()],
+              labels: notes.map((note) => note.getTitle()).toList(),
+              ids: notes.map((note) => note.id).toList(),
               icon: Icons.note_rounded,
             ),
             const Padding(
@@ -59,7 +58,8 @@ class HomePage extends StatelessWidget {
             MyHorizontalScroll(
               count: toDos.length,
               color: MyColors.secondaryBlue,
-              labels: [...toDos.map((todo) => todo.getText()).toList()],
+              labels: toDos.map((todo) => todo.getText()).toList(),
+              ids: toDos.map((todo) => todo.id).toList(),
               icon: Icons.work_rounded,
             ),
             const Padding(
@@ -72,7 +72,8 @@ class HomePage extends StatelessWidget {
             MyHorizontalScroll(
               count: goals.length,
               color: MyColors.tertiaryBlue,
-              labels: [...goals.map((goal) => goal.getText()).toList()],
+              labels: goals.map((goal) => goal.getText()).toList(),
+              ids: goals.map((goal) => goal.id).toList(),
               icon: Icons.push_pin_rounded,
             ),
             const Padding(
@@ -104,6 +105,7 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                     ],
+                    ids: deletedNotes.map((note) => note.id as String).toList(),
                     icon: Icons.delete_rounded,
                   ),
             const Divider(

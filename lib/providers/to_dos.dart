@@ -98,7 +98,12 @@ class ToDos with ChangeNotifier {
     notifyListeners();
   }
 
-  void addToDo(String toAdd, ToDoType type) {
+  void addToDo(ToDo toAdd) {
+    _toDos.insert(0, toAdd);
+    notifyListeners();
+  }
+
+  void addToDoByString(String toAdd, ToDoType type) {
     _toDos.insert(
       0,
       ToDo(
